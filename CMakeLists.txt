@@ -9,7 +9,7 @@ file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS src/*.cpp src/*.c)
 
 add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
 
-include_directories(
+target_include_directories(${PROJECT_NAME} PUBLIC
 	include
 	external/enet/include
 )
