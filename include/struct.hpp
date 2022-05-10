@@ -2,6 +2,8 @@
 
 #include <nlohmann/json.hpp>
 
+using json = nlohmann::json;
+
 struct PlayerData
 {
     const char* username;
