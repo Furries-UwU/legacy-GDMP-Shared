@@ -33,3 +33,5 @@ struct PlayerData
     int color;
     int color2;
 };
+
+void sendPacket(ENetPeer *peer, Packet packet, unsigned int length);
