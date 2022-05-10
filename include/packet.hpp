@@ -6,17 +6,14 @@
 
 struct Packet {
     uint8_t type;
-    unsigned int length;
     uint8_t* data;
 
     Packet(uint8_t type) {
-        this->type = type;
-        this->length = sizeof(this->type);
+        this->type = type
     }
 
-    Packet(uint8_t type, uint8_t* data, unsigned int length) {
+    Packet(uint8_t type, uint8_t* data) {
         this->type = type;
-        this->length = length + 1;
         this->data = data;
     }
 
@@ -24,7 +21,7 @@ struct Packet {
         if (!index) {
             return this->type;
         }
-        else if (index < this->length) {
+        else if (index < sizeof(this)+1) {
             return this->data[index - 1];
         }
         else {
