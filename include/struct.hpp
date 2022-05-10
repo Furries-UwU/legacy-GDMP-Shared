@@ -1,12 +1,13 @@
 #pragma once
 
 #include <nlohmann/json.hpp>
+#include <string>
 
 using json = nlohmann::json;
 
 struct PlayerData
 {
-    const char* username;
+    std::string username;
     int ship;
     int ball;
     int bird;
