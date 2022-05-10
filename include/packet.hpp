@@ -9,7 +9,12 @@ struct Packet {
     unsigned int length;
     uint8_t* data;
 
-    Packet(uint8_t type, unsigned int length, uint8_t* data) {
+    Packet(uint8_t type) {
+        this->type = type;
+        this->length = sizeof(this->type);
+    }
+
+    Packet(uint8_t type, uint8_t* data, unsigned int length) {
         this->type = type;
         this->length = length + 1;
         this->data = data;
