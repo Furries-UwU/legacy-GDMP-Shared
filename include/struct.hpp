@@ -15,3 +15,6 @@ struct PlayerData
     int color;
     int color2;
 };
+
+void to_json(json& j, const PlayerData& p);
+void from_json(const json& j, PlayerData& p);

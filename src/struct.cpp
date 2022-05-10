@@ -1,13 +1,13 @@
 #include "struct.hpp"
 
 void to_json(json& j, const PlayerData& p) {
-    j = json{ {"username", p.username}, {"ship", p.ship}, {"ball", p.ball}, {"bird", p.bird}, {"dart", p.dart}, {"robot", p.robot}, {"spider", p.spider}, {"glow", p.glow}, {"color", p.color}, {"color2", p.color2} };
+	j = json{ {"username", p.username}, {"ship", p.ship}, {"ball", p.ball}, {"bird", p.bird}, {"dart", p.dart}, {"robot", p.robot}, {"spider", p.spider}, {"glow", p.glow}, {"color", p.color}, {"color2", p.color2} };
 }
 
 void from_json(const json& j, PlayerData& p) {
-    j.at("username").get_to(p.username);
-    j.at("ship").get_to(p.ship);
-    j.at("ball").get_to(p.ball);
+	j.at("username").get_to(p.username);
+	j.at("ship").get_to(p.ship);
+	j.at("ball").get_to(p.ball);
 	j.at("bird").get_to(p.bird);
 	j.at("dart").get_to(p.dart);
 	j.at("robot").get_to(p.robot);
