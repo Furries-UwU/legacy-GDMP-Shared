@@ -9,7 +9,7 @@ struct Packet {
     uint8_t* data;
 
     Packet(uint8_t type) {
-        this->type = type
+        this->type = type;
     }
 
     Packet(uint8_t type, uint8_t* data) {
