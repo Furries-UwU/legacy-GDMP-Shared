@@ -1,9 +1,23 @@
 #pragma once
 
 struct Packet {
-	uint8_t type;
-	uint length;
-	uint8_t *data;
+    uint8_t type;
+    unsigned int length;
+    uint8_t* data;
+
+    Packet(uint8_t type, unsigned int length, uint8_t* data) {
+        this->type = type;
+        this->length = length + 1;
+        this->data = data;
+    }
+
+    uint8_t& operator[](int index) {
+        if (!index) {
+            return this->type;
+        } else {
+            return this->data[index - 1];
+        }
+    }
 }
 
 struct PlayerData
