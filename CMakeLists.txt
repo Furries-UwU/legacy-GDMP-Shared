@@ -11,9 +11,12 @@ add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
 
 target_include_directories(${PROJECT_NAME} PUBLIC
 	include
+	external/json/include
 	external/enet/include
+	external/fmt/include
 )
 
+add_subdirectory(external/json)
 add_subdirectory(external/enet)
 add_subdirectory(external/fmt)
 
@@ -21,4 +24,4 @@ IF (WIN32)
 	target_link_libraries(${PROJECT_NAME} winmm wsock32 ws2_32)
 ENDIF()
 
-target_link_libraries(${PROJECT_NAME} enet fmt)
+target_link_libraries(${PROJECT_NAME} json enet fmt)

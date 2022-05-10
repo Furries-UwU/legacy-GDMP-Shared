@@ -1,5 +1,4 @@
 #pragma once
-
 #include <enet/enet.h>
 #include <stdexcept>
 #include <stdint.h>
@@ -28,20 +27,6 @@ struct Packet {
             throw std::out_of_range("Out of packet range");
         }
     }
-};
-
-struct PlayerData
-{
-    const char *username;
-    int ship;
-    int ball;
-    int bird;
-    int dart;
-    int robot;
-    int spider;
-    int glow;
-    int color;
-    int color2;
 };
 
 void sendPacket(ENetPeer *peer, Packet packet, unsigned int length);
