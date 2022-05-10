@@ -1,5 +1,6 @@
 #pragma once
 
+#undef snprintf
 #include <nlohmann/json.hpp>
 #include <string>
 
