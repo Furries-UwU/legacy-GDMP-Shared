@@ -1,5 +1,9 @@
 #pragma once
 
+#include <enet/enet.h>
+#include <stdexcept>
+#include <stdint.h>
+
 struct Packet {
     uint8_t type;
     unsigned int length;
@@ -14,11 +18,15 @@ struct Packet {
     uint8_t& operator[](int index) {
         if (!index) {
             return this->type;
-        } else {
+        }
+        else if (index < this->length) {
             return this->data[index - 1];
         }
+        else {
+            throw std::out_of_range("Out of packet range");
+        }
     }
-}
+};
 
 struct PlayerData
 {
