@@ -5,15 +5,15 @@
 
 struct Packet {
     uint8_t type;
-    uint8_t* data;
+    uint8_t data[];
 
     Packet(uint8_t type) {
         this->type = type;
     }
 
-    Packet(uint8_t type, uint8_t* data) {
+    Packet(uint8_t type, uint8_t data[]) {
         this->type = type;
-        this->data = data;
+        memcpy(this->data, data, sizeof(data));
     }
 
     uint8_t& operator[](int index) {
