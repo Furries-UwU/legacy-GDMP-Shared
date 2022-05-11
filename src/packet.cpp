@@ -3,19 +3,10 @@
 Packet::Packet(uint8_t type, uint32_t length, uint8_t* data) {
     this->type = type;
     this->data = data;
-    this->length = length + 5;
+    this->length = length + 1;
 }
 
 const uint8_t& Packet::operator[](int index) const {
-    uint8_t bytes[this->length];
-    bytes[0] = this->type;
-	bytes[1] = (this->length >> 24) & 0xFF;
-	bytes[2] = (this->length >> 16) & 0xFF;
-	bytes[3] = (this->length >> 8) & 0xFF;
-	bytes[4] = this->length & 0xFF;
-	memcpy(bytes + 5, this->data, this->length - 5);
-
-	/*
     if (!index) {
         return this->type;
     }
@@ -25,7 +16,6 @@ const uint8_t& Packet::operator[](int index) const {
     else {
         throw std::range_error("Out of packet range");
     }
-    */
 }
 
 void sendPacket(ENetPeer* peer, Packet packet) {
