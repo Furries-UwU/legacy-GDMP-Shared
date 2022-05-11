@@ -6,7 +6,7 @@
 #pragma pack(push, 1)
 struct Packet {
     uint8_t type;
-    uint8_t* data;
+    char* data;
 };
 #pragma pack(pop)
 
