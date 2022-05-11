@@ -8,4 +8,4 @@ struct Packet {
 	uint8_t* data;
 };
 
-void sendPacket(ENetPeer *peer, char* data);
+void sendPacket(ENetPeer *peer, Packet packet, unsigned int packetLength);
