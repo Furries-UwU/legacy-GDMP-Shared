@@ -3,7 +3,7 @@
 Packet::Packet(uint8_t type, uint8_t* data, unsigned int length) {
 	this->type = type;
 	this->data = data;
-	this->length = length + 1;
+	this->length = length + 5;
 }
 
 const uint8_t& Packet::operator[](int index) const {
@@ -18,8 +18,8 @@ const uint8_t& Packet::operator[](int index) const {
     }
 }
 
-void sendPacket(ENetPeer* peer, Packet packet, unsigned int packetLength) {
-    ENetPacket* enetPacket = enet_packet_create(&packet, packetLength, ENET_PACKET_FLAG_RELIABLE);
+void sendPacket(ENetPeer* peer, Packet packet) {
+    ENetPacket* enetPacket = enet_packet_create(nullptr, packet.length, ENET_PACKET_FLAG_RELIABLE);
     if (!enetPacket)
         return;
 

@@ -12,4 +12,4 @@ struct Packet {
 	const uint8_t& operator[](int index) const;
 };
 
-void sendPacket(ENetPeer* peer, Packet packet, unsigned int packetLength);
+void sendPacket(ENetPeer* peer, Packet packet);
