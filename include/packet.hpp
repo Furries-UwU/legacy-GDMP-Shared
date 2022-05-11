@@ -3,4 +3,9 @@
 #include <stdexcept>
 #include <stdint.h>
 
+struct Packet {
+	uint8_t type;
+	uint8_t* data;
+};
+
 void sendPacket(ENetPeer *peer, char* data);
