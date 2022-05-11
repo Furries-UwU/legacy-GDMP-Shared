@@ -13,7 +13,7 @@ struct Packet {
 
     Packet(uint8_t type, uint8_t data[]) {
         this->type = type;
-        memcpy(this->data, data, sizeof(data));
+        memcpy(this->data, data, sizeof(uint8_t)*(sizeof(data) * sizeof(*data)));
     }
 
     uint8_t& operator[](int index) {
