@@ -5,7 +5,7 @@ void sendPacket(ENetPeer *peer, Packet packet, unsigned int packetLength) {
     if (!enetPacket)
         return;
 
-	memcpy(enetPacket->data, reinterpret_cast<uint8_t*>(&packet), packetLength);
+	memcpy(enetPacket->data, &packet, packetLength);
 	
     if (enet_peer_send(peer, 0, enetPacket) != 0)
         enet_packet_destroy(enetPacket);
