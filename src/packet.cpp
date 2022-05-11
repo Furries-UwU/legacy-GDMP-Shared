@@ -3,7 +3,7 @@
 Packet::Packet(uint8_t type, uint8_t* data, unsigned int length) {
 	this->type = type;
 	this->data = data;
-	this->length = length + 5;
+	this->length = length + 1 + sizeof(length);
 }
 
 const uint8_t& Packet::operator[](int index) const {
