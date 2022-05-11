@@ -5,10 +5,10 @@
 
 struct Packet {
 	uint8_t type;
+	uint32_t length;
 	uint8_t* data;
-	unsigned int length;
 
-	Packet(uint8_t type, uint8_t* data, unsigned int length);
+	Packet(uint8_t type, uint32_t length, uint8_t* data);
 	const uint8_t& operator[](int index) const;
 };
 

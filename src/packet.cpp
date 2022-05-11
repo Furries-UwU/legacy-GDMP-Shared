@@ -1,9 +1,9 @@
 #include "packet.hpp"
 
-Packet::Packet(uint8_t type, uint8_t* data, unsigned int length) {
+Packet::Packet(uint8_t type, uint32_t length, uint8_t* data) {
 	this->type = type;
 	this->data = data;
-	this->length = length + 1 + sizeof(length);
+	this->length = length + 5;
 }
 
 const uint8_t& Packet::operator[](int index) const {
