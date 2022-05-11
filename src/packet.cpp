@@ -24,7 +24,7 @@ void sendPacket(ENetPeer* peer, Packet packet, unsigned int packetLength) {
         return;
 
     memcpy(enetPacket->data, &packet.type, 1);
-	memcpy(enetPacket->data + 1, &packet.data, packet.length);
+	memcpy(enetPacket->data + 1, packet.data, packet.length);
 
     if (enet_peer_send(peer, 0, enetPacket) != 0)
         enet_packet_destroy(enetPacket);
