@@ -1,7 +1,7 @@
 #include "packet.hpp"
 
 void sendPacket(ENetPeer *peer, char* data) {
-    ENetPacket *enetPacket = enet_packet_create(data, strlen(data)+1, ENET_PACKET_FLAG_RELIABLE);
+    ENetPacket *enetPacket = enet_packet_create(nullptr, strlen(data)+1, ENET_PACKET_FLAG_RELIABLE);
     if (!enetPacket)
         return;
 
