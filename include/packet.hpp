@@ -5,8 +5,7 @@
 
 struct Packet {
 	uint8_t type;
-	unsigned int length;
-	void* data;
+	void** data;
 };
 
 void sendPacket(ENetPeer *peer, Packet packet);
