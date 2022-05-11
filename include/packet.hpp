@@ -5,7 +5,7 @@
 
 struct Packet {
 	uint8_t type;
-	void** data;
+	uint8_t data[];
 };
 
 void sendPacket(ENetPeer *peer, Packet packet);
