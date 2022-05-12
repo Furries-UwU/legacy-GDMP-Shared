@@ -1,6 +1,6 @@
 #include "packet.hpp"
 
-Packet::Packet(uint8_t type, uint32_t length, uint8_t* data) {
+Packet::Packet(uint8_t type, unsigned int length, uint8_t* data) {
     this->type = type;
     this->length = length;
     this->data = data;
@@ -8,8 +8,8 @@ Packet::Packet(uint8_t type, uint32_t length, uint8_t* data) {
 
 Packet::Packet(ENetPacket* packet) {
     if (packet->dataLength < 5) {
-        this->type = 0x00;
-        this->length = 0x00;
+        this->type = UNKNOWN;
+        this->length = 0;
         this->data = nullptr;
     }
     else if (packet->dataLength == 5) {
