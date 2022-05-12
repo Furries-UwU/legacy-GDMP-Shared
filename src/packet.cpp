@@ -19,7 +19,7 @@ const uint8_t& Packet::operator[](int index) {
     else if (index < 5) {
         return ((uint8_t*)&this->length)[index - 1];
     }
-    else if (index < this->length) {
+    else if (index < this->length+5) {
         return this->data[index - 5];
     }
     else {
