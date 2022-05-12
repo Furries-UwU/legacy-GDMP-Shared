@@ -26,7 +26,8 @@ struct RenderData
     unsigned int posX;
     unsigned int posY;
     unsigned int rotation;
-	
+    bool flipped;
+    bool dual;
 };
 
 void to_json(json& j, const PlayerData& p);
