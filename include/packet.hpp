@@ -13,7 +13,5 @@ struct Packet {
 	
 	const uint8_t& operator[](int index);
 	
-	void sendPacket(ENetPeer* peer);
+	void send(ENetPeer* peer);
 };
-
-void sendPacket(ENetPeer* peer, Packet packet);

@@ -38,7 +38,7 @@ const uint8_t& Packet::operator[](int index) {
     }
 }
 
-void Packet::sendPacket(ENetPeer* peer) {
+void Packet::send(ENetPeer* peer) {
     ENetPacket* enetPacket = enet_packet_create(nullptr, this->length, ENET_PACKET_FLAG_RELIABLE);
     if (!enetPacket)
         return;
