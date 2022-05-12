@@ -6,7 +6,7 @@ Packet::Packet(uint8_t type) {
 
 Packet::Packet(uint8_t type, uint32_t length, uint8_t* data) {
     this->type = type;
-    this->length = length + 5; // +1, because of type, +4 because of uint32_t
+    this->length = length;
     this->data = data;
 }
 
@@ -26,18 +26,19 @@ const uint8_t& Packet::operator[](int index) {
 }
 
 void Packet::send(ENetPeer* peer) {
-    ENetPacket* enetPacket = enet_packet_create(nullptr, this->length, ENET_PACKET_FLAG_RELIABLE);
+	int length = this->length + 5;
+    ENetPacket* enetPacket = enet_packet_create(nullptr, length, ENET_PACKET_FLAG_RELIABLE);
     if (!enetPacket)
         return;
 
 
-    uint8_t* data = new uint8_t[this->length];
+    uint8_t* data = new uint8_t[length];
 
-    for (unsigned int i = 0; i < this->length; i++) {
+    for (unsigned int i = 0; i < length; i++) {
         data[i] = this->operator[](i);
     }
 
-    memcpy(enetPacket->data, data, this->length);
+    memcpy(enetPacket->data, data, length);
 
     delete[] data;
 
