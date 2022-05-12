@@ -1,16 +1,15 @@
 #include "packet.hpp"
 
-uint8_t* u32_to_u8(const uint32_t u32, uint8_t* u8) {
-    u8[0] = (u32 & 0xff000000) >> 24;
-    u8[1] = (u32 & 0x00ff0000) >> 16;
-    u8[2] = (u32 & 0x0000ff00) >> 8;
-    u8[3] = u32 & 0x000000ff;
-}
-
 Packet::Packet(uint8_t type, uint32_t length, uint8_t* data) {
     this->type = type;
     this->length = length;
     this->data = data;
+}
+
+Packet::Packet(ENetPacket packet) {
+    this->type = packet.data[0];
+    this->length = packet.data[1] | (packet.data[2] << 8) | (packet.data[3] << 16) | (packet.data[4] << 24);
+    this->data = packet.data + 5;
 }
 
 const uint8_t& Packet::operator[](int index) {
