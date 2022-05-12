@@ -19,7 +19,7 @@ Packet::Packet(ENetPacket* packet) {
     }
     else {
         this->type = packet->data[0];
-        this->length = packet->data[1] | (packet->data[2] << 8) | (packet->data[3] << 16) | (packet->data[4] << 24);
+        this->length = Util::uint8_t_to_int(data + 1);
         this->data = packet->data + 5;
     }
 }

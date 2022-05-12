@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 #include "enum.hpp"
+#include "util.hpp"
 
 struct Packet {
 	uint8_t  type;
