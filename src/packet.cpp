@@ -24,10 +24,7 @@ const uint8_t& Packet::operator[](int index) {
         return this->type;
     }
     else if (index < 5) {
-        uint8_t* data = (uint8_t*) malloc(4);
-		u32_to_u8(this->length, data);
-		return data[index - 1];
-        //return *((uint8_t*)&this->length) + index - 1;
+        return reinterpret_cast<uint8_t*>(&this->length)[index - 1];
     }
     else if (index < this->length + 5) {
         return this->data[index - 5];
