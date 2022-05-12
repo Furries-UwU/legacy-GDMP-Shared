@@ -3,5 +3,5 @@
 
 class Util {
 public:
-	static int uint8_t_to_int(uint8_t* number);
+	static uint32_t uint8_t_to_uint32_t(uint8_t* number);
 };
