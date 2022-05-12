@@ -6,10 +6,22 @@ Packet::Packet(uint8_t type, uint32_t length, uint8_t* data) {
     this->data = data;
 }
 
-Packet::Packet(ENetPacket *packet) {
-    this->type = packet->data[0];
-    this->length = packet->data[1] | (packet->data[2] << 8) | (packet->data[3] << 16) | (packet->data[4] << 24);
-    this->data = packet->data + 5;
+Packet::Packet(ENetPacket* packet) {
+    if (packet->dataLength < 5) {
+        this->type = 0x00;
+        this->length = 0x00;
+        this->data = nullptr;
+    }
+    else if (packet->dataLength == 5) {
+        this->type = packet->data[0];
+        this->length = 0;
+        this->data = nullptr;
+    }
+    else {
+        this->type = packet->data[0];
+        this->length = packet->data[1] | (packet->data[2] << 8) | (packet->data[3] << 16) | (packet->data[4] << 24);
+        this->data = packet->data + 5;
+    }
 }
 
 const uint8_t& Packet::operator[](int index) {
