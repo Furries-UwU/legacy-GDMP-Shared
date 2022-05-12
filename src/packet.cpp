@@ -2,6 +2,8 @@
 
 Packet::Packet(uint8_t type) {
     this->type = type;
+    this->length = 0;
+    this->data = nullptr;
 }
 
 Packet::Packet(uint8_t type, uint32_t length, uint8_t* data) {
@@ -11,13 +13,13 @@ Packet::Packet(uint8_t type, uint32_t length, uint8_t* data) {
 }
 
 const uint8_t& Packet::operator[](int index) {
-    if (!index) { // 0
+    if (!index) {
         return this->type;
     }
-    else if (index < 5) { // 1, 2, 3, 4
+    else if (index < 5) {
         return ((uint8_t*)&this->length)[index - 1];
     }
-    else if (index < this->length) { // 5, 6, 7, 8, 9, ...
+    else if (index < this->length) {
         return this->data[index - 5];
     }
     else {
@@ -26,7 +28,7 @@ const uint8_t& Packet::operator[](int index) {
 }
 
 void Packet::send(ENetPeer* peer) {
-	int length = this->length + 5;
+    int length = this->length + 5;
     ENetPacket* enetPacket = enet_packet_create(nullptr, length, ENET_PACKET_FLAG_RELIABLE);
     if (!enetPacket)
         return;
