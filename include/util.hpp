@@ -1,5 +1,7 @@
 #pragma once
+#include <stdint.h>
 
-static class Util {
-	int uint8_t_to_int(uint8_t* number);
+class Util {
+public:
+	static int uint8_t_to_int(uint8_t* number);
 };
