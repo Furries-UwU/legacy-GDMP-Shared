@@ -7,12 +7,6 @@ uint8_t* u32_to_u8(const uint32_t u32, uint8_t* u8) {
     u8[3] = u32 & 0x000000ff;
 }
 
-Packet::Packet(uint8_t type) {
-    this->type = type;
-    this->length = 0;
-    this->data = nullptr;
-}
-
 Packet::Packet(uint8_t type, uint32_t length, uint8_t* data) {
     this->type = type;
     this->length = length;

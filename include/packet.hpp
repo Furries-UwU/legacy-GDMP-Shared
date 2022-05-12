@@ -8,7 +8,7 @@ struct Packet {
 	uint32_t length;
 	uint8_t* data;
 
-	Packet(uint8_t type);
+	Packet(uint8_t type) : Packet(type, 0, nullptr) {};
 	Packet(uint8_t type, uint32_t length, uint8_t* data);
 	
 	const uint8_t& operator[](int index);
