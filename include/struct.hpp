@@ -2,20 +2,31 @@
 #include <nlohmann/json.hpp>
 #include <string>
 
+#include "enum.hpp"
+
 using json = nlohmann::json;
 
 struct PlayerData
 {
     std::string username;
-    int ship;
-    int ball;
-    int bird;
-    int dart;
-    int robot;
-    int spider;
-    int glow;
-    int color;
-    int color2;
+    unsigned int ship;
+    unsigned int ball;
+    unsigned int bird;
+    unsigned int dart;
+    unsigned int robot;
+    unsigned int spider;
+    unsigned int glow;
+    unsigned int color;
+    unsigned int color2;
+};
+
+struct RenderData
+{
+    Gamemode gamemode;
+    unsigned int posX;
+    unsigned int posY;
+    unsigned int rotation;
+	
 };
 
 void to_json(json& j, const PlayerData& p);
