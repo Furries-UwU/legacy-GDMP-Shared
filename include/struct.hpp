@@ -3,12 +3,6 @@
 
 #include "enum.hpp"
 
-struct Color {
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-};
-
 struct ServerPlayerData
 {
     unsigned int ship;
@@ -18,8 +12,8 @@ struct ServerPlayerData
     unsigned int robot;
     unsigned int spider;
     unsigned int glow;
-    Color primary;
-    Color secondary;
+    int primaryColor;
+    int secondaryColor;
 };
 
 struct BaseRenderData
@@ -57,8 +51,8 @@ struct ClientPlayerData
     unsigned int robot;
     unsigned int spider;
     unsigned int glow;
-    Color primary;
-    Color secondary;
+    int primaryColor;
+    int secondaryColor;
 };
 
 struct PlayerRenderData
