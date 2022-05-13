@@ -23,10 +23,16 @@ struct ServerPlayerData
 struct RenderData
 {
     Gamemode gamemode;
-    int posX;
-    int posY;
-    int rotation;
-    bool flipped; // as in upside-down
+    Gamemode playerOneGamemode;
+    Gamemode playerTwoGamemode;
+    int playerOneX;
+    int playerTwoX;
+    int playerOneY;
+    int playerTwoY;
+    int playerOneRotation;
+    int playerTwoRotation;
+    bool playerOneFlipped;
+    bool playerTwoFlipped;
     bool dual;
 };
 
@@ -50,11 +56,16 @@ struct ClientPlayerData
 struct PlayerRenderData
 {
     unsigned int playerId;
-    Gamemode gamemode;
-    int posX;
-    int posY;
-    int rotation;
-    bool flipped; // as in upside-down
+    Gamemode playerOneGamemode;
+	Gamemode playerTwoGamemode;
+    int playerOneX;
+    int playerTwoX;
+	int playerOneY;
+	int playerTwoY;
+	int playerOneRotation;
+	int playerTwoRotation;
+	bool playerOneFlipped;
+	bool playerTwoFlipped;
     bool dual;
 };
 
