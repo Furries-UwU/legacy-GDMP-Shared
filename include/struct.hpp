@@ -33,13 +33,13 @@ struct BaseRenderData
     float posX;
 	float posY;
     float rotation;
-    bool dual;
 };
 
 struct RenderData {
     BaseRenderData playerOne;
     BaseRenderData playerTwo;
     bool visible;
+    bool dual;
 };
 
 // Client
@@ -65,6 +65,7 @@ struct PlayerRenderData
     BaseRenderData playerOne;
     BaseRenderData playerTwo;
     bool visible;
+    bool dual;
 };
 
 struct PlayerJoinLevel
