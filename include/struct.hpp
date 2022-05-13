@@ -6,7 +6,7 @@
 
 using json = nlohmann::json;
 
-struct ServerPlayerSkinData
+struct ServerPlayerData
 {
     std::string username;
     unsigned int ship;
@@ -32,7 +32,7 @@ struct RenderData
 
 // Client
 
-struct ClientPlayerSkinData
+struct ClientPlayerData
 {
     unsigned int playerId;
     std::string username;
@@ -68,8 +68,8 @@ struct PlayerLeaveLevel
     unsigned int playerId;
 };
 
-void to_json(json& j, const ServerPlayerSkinData& p);
-void from_json(const json& j, ServerPlayerSkinData& p);
+void to_json(json& j, const ServerPlayerData& p);
+void from_json(const json& j, ServerPlayerData& p);
 
-void to_json(json& j, const ClientPlayerSkinData& p);
-void from_json(const json& j, ClientPlayerSkinData& p);
+void to_json(json& j, const ClientPlayerData& p);
+void from_json(const json& j, ClientPlayerData& p);
