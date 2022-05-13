@@ -5,6 +5,7 @@
 
 struct ServerPlayerData
 {
+    unsigned int cube;
     unsigned int ship;
     unsigned int ball;
     unsigned int bird;
@@ -30,6 +31,7 @@ struct BaseRenderData
     float posX;
 	float posY;
     float rotation;
+    float scale;
 };
 
 struct RenderData {
@@ -44,6 +46,7 @@ struct RenderData {
 struct ClientPlayerData
 {
     unsigned int playerId;
+    unsigned int cube;
     unsigned int ship;
     unsigned int ball;
     unsigned int bird;
