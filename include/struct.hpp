@@ -1,14 +1,10 @@
 #pragma once
-#include <nlohmann/json.hpp>
 #include <string>
 
 #include "enum.hpp"
 
-using json = nlohmann::json;
-
 struct ServerPlayerData
 {
-    char* username;
     unsigned int ship;
     unsigned int ball;
     unsigned int bird;
@@ -47,7 +43,6 @@ struct RenderData {
 struct ClientPlayerData
 {
     unsigned int playerId;
-    std::string username;
     unsigned int ship;
     unsigned int ball;
     unsigned int bird;
@@ -77,11 +72,3 @@ struct PlayerLeaveLevel
 {
     unsigned int playerId;
 };
-
-/*
-void to_json(json& j, const ServerPlayerData& p);
-void from_json(const json& j, ServerPlayerData& p);
-
-void to_json(json& j, const ClientPlayerData& p);
-void from_json(const json& j, ClientPlayerData& p);
-*/

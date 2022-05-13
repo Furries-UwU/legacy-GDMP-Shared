@@ -24,4 +24,4 @@ IF (WIN32)
 	target_link_libraries(${PROJECT_NAME} winmm wsock32 ws2_32)
 ENDIF()
 
-target_link_libraries(${PROJECT_NAME} nlohmann_json enet fmt)
+target_link_libraries(${PROJECT_NAME} enet fmt)
