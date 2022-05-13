@@ -20,20 +20,25 @@ struct ServerPlayerData
     unsigned int color2;
 };
 
-struct RenderData
+struct BaseRenderData
 {
-    Gamemode gamemode;
-    Gamemode playerOneGamemode;
-    Gamemode playerTwoGamemode;
-    int playerOneX;
-    int playerTwoX;
-    int playerOneY;
-    int playerTwoY;
-    int playerOneRotation;
-    int playerTwoRotation;
-    bool playerOneFlipped;
-    bool playerTwoFlipped;
-    bool dual;
+	bool m_isShip;
+	bool m_isBird;
+	bool m_isBall;
+	bool m_isDart;
+	bool m_isRobot;
+	bool m_isSpider;
+    bool m_isUpsideDown;
+    bool m_isDashing;
+    float posX;
+	float posY;
+    float rotation;
+};
+
+struct RenderData {
+    BaseRenderData playerOne;
+    BaseRenderData playerTwo;
+    bool visible;
 };
 
 // Client
@@ -56,17 +61,8 @@ struct ClientPlayerData
 struct PlayerRenderData
 {
     unsigned int playerId;
-    Gamemode playerOneGamemode;
-	Gamemode playerTwoGamemode;
-    int playerOneX;
-    int playerTwoX;
-	int playerOneY;
-	int playerTwoY;
-	int playerOneRotation;
-	int playerTwoRotation;
-	bool playerOneFlipped;
-	bool playerTwoFlipped;
-    bool dual;
+    BaseRenderData playerOne;
+    BaseRenderData playerTwo;
 };
 
 struct PlayerJoinLevel
