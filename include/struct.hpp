@@ -33,6 +33,7 @@ struct BaseRenderData
     float posX;
 	float posY;
     float rotation;
+    bool dual;
 };
 
 struct RenderData {
