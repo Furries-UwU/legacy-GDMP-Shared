@@ -63,6 +63,7 @@ struct PlayerRenderData
     unsigned int playerId;
     BaseRenderData playerOne;
     BaseRenderData playerTwo;
+    bool visible;
 };
 
 struct PlayerJoinLevel
