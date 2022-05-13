@@ -23,9 +23,9 @@ struct ServerPlayerSkinData
 struct RenderData
 {
     Gamemode gamemode;
-    unsigned int posX;
-    unsigned int posY;
-    unsigned int rotation;
+    int posX;
+    int posY;
+    int rotation;
     bool flipped; // as in upside-down
     bool dual;
 };
