@@ -8,7 +8,7 @@ using json = nlohmann::json;
 
 struct ServerPlayerData
 {
-    std::string username;
+    char* username;
     unsigned int ship;
     unsigned int ball;
     unsigned int bird;
@@ -78,8 +78,10 @@ struct PlayerLeaveLevel
     unsigned int playerId;
 };
 
+/*
 void to_json(json& j, const ServerPlayerData& p);
 void from_json(const json& j, ServerPlayerData& p);
 
 void to_json(json& j, const ClientPlayerData& p);
 void from_json(const json& j, ClientPlayerData& p);
+*/

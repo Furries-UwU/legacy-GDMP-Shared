@@ -1,5 +1,6 @@
 #include "struct.hpp"
 
+/*
 void to_json(json& j, const ServerPlayerData& p) {
 	j = json{ {"username", p.username}, {"ship", p.ship}, {"ball", p.ball}, {"bird", p.bird}, {"dart", p.dart}, {"robot", p.robot}, {"spider", p.spider}, {"glow", p.glow}, {"color", p.color}, {"color2", p.color2} };
 }
@@ -34,3 +35,4 @@ void from_json(const json& j, ClientPlayerData& p) {
 	j.at("color").get_to(p.color);
 	j.at("color2").get_to(p.color2);
 }
+*/
