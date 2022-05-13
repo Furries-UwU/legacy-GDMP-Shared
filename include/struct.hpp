@@ -5,14 +5,14 @@
 
 struct ServerPlayerData
 {
-    unsigned int cube;
-    unsigned int ship;
-    unsigned int ball;
-    unsigned int bird;
-    unsigned int dart;
-    unsigned int robot;
-    unsigned int spider;
-    unsigned int glow;
+    int cube;
+    int ship;
+    int ball;
+    int bird;
+    int dart;
+    int robot;
+    int spider;
+    int glow;
     int primaryColor;
     int secondaryColor;
 };
@@ -46,14 +46,14 @@ struct RenderData {
 struct ClientPlayerData
 {
     unsigned int playerId;
-    unsigned int cube;
-    unsigned int ship;
-    unsigned int ball;
-    unsigned int bird;
-    unsigned int dart;
-    unsigned int robot;
-    unsigned int spider;
-    unsigned int glow;
+    int cube;
+    int ship;
+    int ball;
+    int bird;
+    int dart;
+    int robot;
+    int spider;
+    int glow;
     int primaryColor;
     int secondaryColor;
 };
