@@ -26,6 +26,7 @@ struct BaseRenderData
 	bool m_isSpider;
     bool m_isUpsideDown;
     bool m_isDashing;
+    float m_playerSpeed;
     float posX;
 	float posY;
     float rotation;
