@@ -12,9 +12,9 @@ struct ServerPlayerData
     int dart;
     int robot;
     int spider;
-    bool glow;
     int primaryColor;
     int secondaryColor;
+    bool glow;
 };
 
 struct BaseRenderData
