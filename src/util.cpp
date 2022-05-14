@@ -52,11 +52,8 @@ short Util::toBitwise(Gamemode gamemode) {
 	}
 }
 
-short Util::toBitwise(bool isCube, bool isShip, bool isBall, bool isUFO, bool isWave, bool isRobot, bool isSpider) {
-	short flags = 0;
-	
-	if (isCube)
-		flags |= CUBE;
+short Util::toBitwise(bool isShip, bool isBall, bool isUFO, bool isWave, bool isRobot, bool isSpider) {
+	short flags = 1;
 
 	if (isShip)
 		flags |= SHIP;
