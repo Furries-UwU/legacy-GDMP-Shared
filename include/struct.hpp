@@ -53,9 +53,9 @@ struct ClientPlayerData
     int dart;
     int robot;
     int spider;
-    bool glow;
     int primaryColor;
     int secondaryColor;
+    bool glow;
 };
 
 struct PlayerRenderData
