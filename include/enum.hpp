@@ -13,16 +13,16 @@ enum PacketType: uint8_t {
 };
 
 enum Gamemode {
-	CUBE = 1,
-	SHIP = 2,
-	BALL = 4,
-	UFO = 8,
-	WAVE = 16,
-	ROBOT = 32,
-	SPIDER = 64,
+	CUBE,
+	SHIP,
+	BALL,
+	UFO,
+	WAVE,
+	ROBOT,
+	SPIDER,
 
-	NONE = 32764,
-	OWO = 32765,
-	UWU = 32766,
-	NYAAA = 32767
+	NONE,
+	OWO,
+	UWU,
+	NYAAA
 };
