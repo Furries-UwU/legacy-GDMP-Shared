@@ -1,4 +1,5 @@
 #pragma once
+
 enum PacketType: uint8_t {
 	UNKNOWN,
 	PLAYER_DATA, // Client -> Server
@@ -12,16 +13,16 @@ enum PacketType: uint8_t {
 };
 
 enum Gamemode {
-	CUBE,
-	SHIP,
-	BALL,
-	UFO,
-	WAVE,
-	ROBOT,
-	SPIDER,
+	CUBE = 1,
+	SHIP = 2,
+	BALL = 4,
+	UFO = 8,
+	WAVE = 16,
+	ROBOT = 32,
+	SPIDER = 64,
 
-	
-	OWO,
-	UWU,
-	NYAAA
+	UNKNOWN = 32764,
+	OWO = 32765,
+	UWU = 32766,
+	NYAAA = 32767
 };

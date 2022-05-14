@@ -19,12 +19,7 @@ struct ServerPlayerData
 
 struct BaseRenderData
 {
-	bool m_isShip;
-	bool m_isBird;
-	bool m_isBall;
-	bool m_isDart;
-	bool m_isRobot;
-	bool m_isSpider;
+    short gamemodeFlags;
     bool m_isUpsideDown;
     bool m_isDashing;
     float m_playerSpeed;
