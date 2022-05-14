@@ -27,7 +27,7 @@ Gamemode Util::fromBitwise(short flags) {
 		return SPIDER;
 	}
 	else {
-		return UNKNOWN;
+		return NONE;
 	}
 }
 
@@ -54,7 +54,7 @@ short Util::toBitwise(Gamemode gamemode) {
 
 short Util::toBitwise(bool isCube, bool isShip, bool isBall, bool isUFO, bool isWave, bool isRobot, bool isSpider) {
 	short flags = 0;
-
+	
 	if (isCube)
 		flags |= CUBE;
 

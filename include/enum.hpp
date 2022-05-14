@@ -21,7 +21,7 @@ enum Gamemode {
 	ROBOT = 32,
 	SPIDER = 64,
 
-	UNKNOWN = 32764,
+	NONE = 32764,
 	OWO = 32765,
 	UWU = 32766,
 	NYAAA = 32767
