@@ -11,7 +11,7 @@ enum PacketType {
 };
 
 enum Gamemode {
-	UNKNOWN,
+	NONE,
 	CUBE,
 	SHIP,
 	BALL,
