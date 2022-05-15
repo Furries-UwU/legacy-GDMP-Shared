@@ -1,18 +1,17 @@
 #pragma once
 
-enum PacketType: uint8_t {
+enum PacketType {
 	UNKNOWN,
-	PLAYER_DATA, // Client -> Server
-	RENDER_DATA, // Client -> Server 
-	UPDATE_PLAYER_RENDER_DATA, // Server -> Client
-	UPDATE_PLAYER_DATA, // Server -> Client
-	JOIN_LEVEL, // Client -> Server
-	LEAVE_LEVEL, // Client -> Server
-	PLAYER_JOIN_LEVEL, // Server -> Client
-	PLAYER_LEAVE_LEVEL // Server -> Client
+	USERNAME, // Unused for now
+	ICON_DATA,
+	COLOR_DATA,
+	RENDER_DATA,
+	JOIN_LEVEL,
+	LEAVE_LEVEL
 };
 
 enum Gamemode {
+	UNKNOWN,
 	CUBE,
 	SHIP,
 	BALL,
@@ -21,8 +20,7 @@ enum Gamemode {
 	ROBOT,
 	SPIDER,
 
-	NONE,
-	OWO,
-	UWU,
-	NYAAA
+	OWO = 254,
+	UWU = 255,
+	NYAAA = 256
 };

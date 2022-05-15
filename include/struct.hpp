@@ -1,78 +1,60 @@
 #pragma once
-#include <string>
-
 #include "enum.hpp"
 
-struct ServerPlayerData
-{
-    int cube;
-    int ship;
-    int ball;
-    int bird;
-    int dart;
-    int robot;
-    int spider;
+struct Position {
+    int x;
+    int y;
+};
+
+struct IconData {
+    int cubeId;
+    int shipId;
+    int ballId;
+    int ufoId;
+    int waveId;
+    int robotId;
+    int spiderId;
+};
+
+struct ColorData {
     int primaryColor;
     int secondaryColor;
     bool glow;
 };
 
-struct BaseRenderData
-{
-    bool m_isShip;
-    bool m_isBird;
-    bool m_isBall;
-    bool m_isDart;
-    bool m_isRobot;
-    bool m_isSpider;
-    bool m_isUpsideDown;
-    bool m_isDashing;
-    float m_playerSpeed;
-    float posX;
-	float posY;
-    float rotation;
-    float scale;
+struct BaseRenderData {
+    Position position;
+    int rotation;
+    int scale;
+    bool isShip;
+    bool isBall;
+    bool isUFO;
+    bool isWave;
+    bool isRobot;
+    bool isSpider;
 };
 
 struct RenderData {
+    int playerId;
     BaseRenderData playerOne;
     BaseRenderData playerTwo;
-    bool visible;
-    bool dual;
+    bool isDual;
+    bool isVisible;
 };
 
-// Client
+// Used by server to send to client
 
-struct ClientPlayerData
-{
-    unsigned int playerId;
-    int cube;
-    int ship;
-    int ball;
-    int bird;
-    int dart;
-    int robot;
-    int spider;
-    int primaryColor;
-    int secondaryColor;
-    bool glow;
+struct IncomingIconData {
+    int playerId;
+    IconData iconData;
 };
 
-struct PlayerRenderData
-{
-    unsigned int playerId;
-    BaseRenderData playerOne;
-    BaseRenderData playerTwo;
-    bool visible;
-    bool dual;
+struct IncomingColorData {
+    int playerId;
+    ColorData colorData;
 };
 
-struct PlayerJoinLevel
-{
-    unsigned int playerId;
-};
-
-struct PlayerLeaveLevel
-{
-    unsigned int playerId;
+struct IncomingRenderData {
+    int playerId;
+    RenderData renderData;
 };
