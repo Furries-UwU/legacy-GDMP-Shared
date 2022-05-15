@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+
 #include "enum.hpp"
 
 struct Position {
@@ -35,7 +37,6 @@ struct BaseRenderData {
 };
 
 struct RenderData {
-    int playerId;
     BaseRenderData playerOne;
     BaseRenderData playerTwo;
     bool isDual;
@@ -57,4 +58,9 @@ struct IncomingColorData {
 struct IncomingRenderData {
     int playerId;
     RenderData renderData;
+};
+
+struct IncomingUsername {
+    int playerId;
+    char* username;
 };
