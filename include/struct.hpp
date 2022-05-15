@@ -4,8 +4,8 @@
 #include "enum.hpp"
 
 struct Position {
-    int x;
-    int y;
+    float x;
+    float y;
 };
 
 struct IconData {
@@ -26,8 +26,8 @@ struct ColorData {
 
 struct BaseRenderData {
     Position position;
-    int rotation;
-    int scale;
+    float rotation;
+    float scale;
     bool isShip;
     bool isBall;
     bool isUFO;
