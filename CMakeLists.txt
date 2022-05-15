@@ -18,4 +18,4 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 add_subdirectory(external/GameNetworkingSockets)
 add_subdirectory(external/fmt)
 
-target_link_libraries(${PROJECT_NAME} GameNetworkingSockets::shared fmt)
+target_link_libraries(${PROJECT_NAME} GameNetworkingSockets::static fmt)
