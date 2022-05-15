@@ -51,7 +51,7 @@ const uint8_t &Packet::operator[](int index)
     }
 }
 
-void Packet::send(ISteamNetworkingSockets *interface, HSteamNetConnection connection)
+void Packet::send(ISteamNetworkingSockets *nInterface, HSteamNetConnection connection)
 {
     int length = this->length + 5;
 
@@ -62,7 +62,7 @@ void Packet::send(ISteamNetworkingSockets *interface, HSteamNetConnection connec
         data[i] = this->operator[](i);
     }
 
-    interface->SendMessageToConnection(connection, data, length, k_nSteamNetworkingSend_Reliable, nullptr);
+    nInterface->SendMessageToConnection(connection, data, length, k_nSteamNetworkingSend_Reliable, nullptr);
 
     delete[] data;
 }

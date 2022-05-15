@@ -19,5 +19,5 @@ struct Packet {
 	
 	const uint8_t& operator[](int index);
 	
-	void send(ISteamNetworkingSockets *interface, HSteamNetConnection connection);
+	void send(ISteamNetworkingSockets *nInterface, HSteamNetConnection connection);
 };
