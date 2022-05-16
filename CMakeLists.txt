@@ -11,7 +11,7 @@ set(protobuf_BUILD_SHARED_LIBS OFF)
 set(Protobuf_USE_STATIC_LIBS ON)
 set(protobuf_BUILD_TESTS OFF)
 
-add_subdirectory(external/protobuf/cmake/)
+add_subdirectory(external/protobuf/cmake)
 find_package(OpenSSL REQUIRED)
 
 file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS src/*.cpp src/*.c)
