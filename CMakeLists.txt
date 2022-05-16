@@ -5,25 +5,25 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(GDMP-Shared)
 
-set(VCPKG_TARGET_TRIPLET x86-windows-static)
-
 execute_process(COMMAND ${CMAKE_COMMAND}
 		-G "${CMAKE_GENERATOR}"
 		-Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_MODULE_COMPATIBLE=ON -Dprotobuf_BUILD_SHARED_LIBS=OFF
 		-DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/protobuf
 		-S ${CMAKE_CURRENT_SOURCE_DIR}/external/protobuf/cmake
 		-B ${CMAKE_BINARY_DIR}/build_protobuf
+		${PROTOBUF_BUILD_FLAG}
 		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/external/protobuf)
 execute_process(COMMAND ${CMAKE_COMMAND}
 		--build "${CMAKE_BINARY_DIR}/build_protobuf"
 		--config ${CMAKE_BUILD_TYPE}
-		--target install)
+		--target install
+		${PROTOBUF_INSTALL_FLAG})
 set(Protobuf_USE_STATIC_LIBS ON)
-set(Protobuf_PREFIX_PATH
-		"${CMAKE_BINARY_DIR}/protobuf/include"
-		"${CMAKE_BINARY_DIR}/protobuf/lib"
-		"${CMAKE_BINARY_DIR}/protobuf/bin" )
-list(APPEND CMAKE_PREFIX_PATH "${Protobuf_PREFIX_PATH}")
+
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}/protobuf/bin")
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}/protobuf/cmake")
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}/protobuf/include")
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}/protobuf/lib")
 
 set(OPENSSL_USE_STATIC_LIBS TRUE)
 find_package(OpenSSL REQUIRED)
