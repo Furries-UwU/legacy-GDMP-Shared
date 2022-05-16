@@ -5,12 +5,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(GDMP-Shared)
 
+set(ABSL_PROPAGATE_CXX_STD ON)
+
 set(VCPKG_TARGET_TRIPLET x86-windows-static)
 set(OPENSSL_USE_STATIC_LIBS TRUE)
 set(Protobuf_USE_STATIC_LIBS ON)
 
+add_subdirectory(external/protobuf)
 find_package(OpenSSL REQUIRED)
-find_package(protobuf REQUIRED)
 
 file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS src/*.cpp src/*.c)
 
@@ -27,6 +29,6 @@ add_subdirectory(external/fmt)
 
 target_link_libraries(${PROJECT_NAME}
 		OpenSSL::Crypto
-		protobuf::libprotoc protobuf::libprotobuf protobuf::libprotobuf-lite
+		protobuf::libprotobuf
 		GameNetworkingSockets::static
 		fmt)
