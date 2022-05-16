@@ -6,24 +6,23 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 project(GDMP-Shared)
 
 set(VCPKG_TARGET_TRIPLET x86-windows-static)
-
 set(Protobuf_USE_STATIC_LIBS ON)
 
 execute_process(COMMAND ${CMAKE_COMMAND}
 		-G "${CMAKE_GENERATOR}"
 		-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
 		-Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_MODULE_COMPATIBLE=ON
-		-DCMAKE_INSTALL_PREFIX=${PROJECT_SOURCE_DIR}/build/protobuf
-		-S ${PROJECT_SOURCE_DIR}/external/protobuf/cmake
-		-B ${PROJECT_SOURCE_DIR}/build/protobuf
-		WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/external/protobuf)
+		-DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_SOURCE_DIR}/build/protobuf
+		-S ${CMAKE_CURRENT_SOURCE_DIR}/external/protobuf/cmake
+		-B ${CMAKE_CURRENT_SOURCE_DIR}/build/protobuf
+		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/external/protobuf)
 execute_process(COMMAND ${CMAKE_COMMAND}
-		--build "${PROJECT_SOURCE_DIR}/build/protobuf"
+		--build "${CMAKE_CURRENT_SOURCE_DIR}/build/protobuf"
 		--config ${CMAKE_BUILD_TYPE}
 		--target install)
 
-set(Protobuf_LIBRARIES ${PROJECT_SOURCE_DIR}/build/protobuf/lib)
-set(Protobuf_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/build/protobuf/include)
+set(Protobuf_LIBRARIES ${CMAKE_CURRENT_SOURCE_DIR}/build/protobuf/lib)
+set(Protobuf_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/build/protobuf/include)
 
 set(OPENSSL_USE_STATIC_LIBS TRUE)
 find_package(OpenSSL REQUIRED)
