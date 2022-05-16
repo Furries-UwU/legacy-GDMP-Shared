@@ -7,4 +7,4 @@
 [submodule "external/protobuf"]
 	path = external/protobuf
 	url = https://github.com/protocolbuffers/protobuf.git
-	branch = 3.5.x
+	branch = 3.20.x
