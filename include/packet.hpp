@@ -19,7 +19,7 @@ public:
 
     static Packet serialize(ENetPacket *packet);
 
-    void sendPacket(ENetPeer *peer) const;
+    void sendPacket(ENetPeer *peer);
 
-    const uint8_t& operator[](int index) const;
+    const uint8_t& operator[](int index);
 };

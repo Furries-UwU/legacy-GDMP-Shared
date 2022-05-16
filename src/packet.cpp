@@ -25,7 +25,7 @@ Packet Packet::serialize(ENetPacket *eNetPacket) {
     return packet;
 }
 
-void Packet::sendPacket(ENetPeer* peer) const {
+void Packet::sendPacket(ENetPeer* peer) {
     auto trueLength = this->length + 5;
     ENetPacket* enetPacket = enet_packet_create(nullptr, trueLength, ENET_PACKET_FLAG_RELIABLE);
     if (!enetPacket)
@@ -44,12 +44,12 @@ void Packet::sendPacket(ENetPeer* peer) const {
         enet_packet_destroy(enetPacket);
 }
 
-const uint8_t& Packet::operator[](int index) const {
+const uint8_t& Packet::operator[](int index) {
     if (!index) {
         return this->type;
     }
     else if (index < 5) {
-        return reinterpret_cast<const uint8_t*>(&this->length)[index - 1];
+        return reinterpret_cast<uint8_t*>(&this->length)[index - 1];
     }
     else if (index < this->length + 5) {
         return this->data[index - 5];
