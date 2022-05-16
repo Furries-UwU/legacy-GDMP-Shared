@@ -31,14 +31,13 @@ void Packet::sendPacket(ENetPeer* peer) {
     if (!enetPacket)
         return;
 
-
     auto packetData = new uint8_t[trueLength];
 
     for (int i = 0; i < trueLength; i++) {
         packetData[i] = this->operator[](i);
     }
 
-    memcpy(enetPacket->data, data, length);
+    memcpy(enetPacket->data, data, trueLength);
 
     delete[] packetData;
 
@@ -47,7 +46,7 @@ void Packet::sendPacket(ENetPeer* peer) {
 }
 
 const uint8_t& Packet::operator[](int index) {
-    if (!index) {
+    if (index == 0) {
         return this->type;
     }
     else if (index < 5) {
