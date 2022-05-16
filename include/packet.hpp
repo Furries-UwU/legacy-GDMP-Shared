@@ -21,5 +21,5 @@ public:
 
     void sendPacket(ENetPeer *peer) const;
 
-    const uint8_t& operator[](int index);
+    const uint8_t& operator[](int index) const;
 };
