@@ -9,7 +9,7 @@ set(VCPKG_TARGET_TRIPLET x86-windows-static)
 set(OPENSSL_USE_STATIC_LIBS TRUE)
 set(Protobuf_USE_STATIC_LIBS ON)
 
-add_subdirectory(external/protobuf)
+add_subdirectory(external/protobuf/cmake)
 find_package(OpenSSL REQUIRED)
 
 file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS src/*.cpp src/*.c)
