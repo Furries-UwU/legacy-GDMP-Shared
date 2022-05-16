@@ -7,6 +7,7 @@ project(GDMP-Shared)
 
 set(VCPKG_TARGET_TRIPLET x86-windows-static)
 set(OPENSSL_USE_STATIC_LIBS TRUE)
+set(protobuf_BUILD_SHARED_LIBS OFF)
 set(Protobuf_USE_STATIC_LIBS ON)
 set(protobuf_BUILD_TESTS OFF)
 
