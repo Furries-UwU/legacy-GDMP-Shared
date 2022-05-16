@@ -20,7 +20,7 @@ add_subdirectory(external/json)
 add_subdirectory(external/fmt)
 
 target_link_libraries(${PROJECT_NAME}
+	  nlohmann_json
         enet
-        json
         fmt)
 
