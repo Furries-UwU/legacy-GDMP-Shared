@@ -9,6 +9,9 @@ set(VCPKG_TARGET_TRIPLET x86-windows-static)
 set(OPENSSL_USE_STATIC_LIBS TRUE)
 set(Protobuf_USE_STATIC_LIBS ON)
 
+find_package(OpenSSL REQUIRED)
+find_package(protobuf REQUIRED)
+
 file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS src/*.cpp src/*.c)
 
 add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
@@ -18,9 +21,6 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 	external/GameNetworkingSockets/include
 	external/fmt/include
 )
-
-find_package(OpenSSL REQUIRED)
-find_package(protobuf CONFIG REQUIRED)
 
 add_subdirectory(external/GameNetworkingSockets)
 add_subdirectory(external/fmt)
