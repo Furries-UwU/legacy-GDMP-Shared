@@ -16,6 +16,8 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 	external/fmt/include
 )
 
+add_subdirectory(external/json)
+add_subdirectory(external/enet)
 add_subdirectory(external/fmt)
 
 IF (WIN32)
