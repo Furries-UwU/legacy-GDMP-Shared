@@ -27,6 +27,6 @@ add_subdirectory(external/fmt)
 
 target_link_libraries(${PROJECT_NAME}
 		OpenSSL::Crypto
-		protobuf::libprotobuf
+		protobuf::libprotoc protobuf::libprotobuf protobuf::libprotobuf-lite
 		GameNetworkingSockets::static
 		fmt)
