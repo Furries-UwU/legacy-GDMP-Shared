@@ -8,6 +8,7 @@ project(GDMP-Shared)
 set(VCPKG_TARGET_TRIPLET x86-windows-static)
 set(OPENSSL_USE_STATIC_LIBS TRUE)
 set(Protobuf_USE_STATIC_LIBS ON)
+set(protobuf_BUILD_TESTS FALSE)
 
 add_subdirectory(external/protobuf/cmake)
 find_package(OpenSSL REQUIRED)
@@ -27,6 +28,6 @@ add_subdirectory(external/fmt)
 
 target_link_libraries(${PROJECT_NAME}
 		OpenSSL::Crypto
-		protobuf::libprotobuf
+		libprotobuf
 		GameNetworkingSockets::static
 		fmt)
