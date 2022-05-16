@@ -19,11 +19,11 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 	external/fmt/include
 )
 
-add_subdirectory(external/GameNetworkingSockets)
-add_subdirectory(external/fmt)
-
 find_package(OpenSSL REQUIRED)
 find_package(protobuf CONFIG REQUIRED)
+
+add_subdirectory(external/GameNetworkingSockets)
+add_subdirectory(external/fmt)
 
 target_link_libraries(${PROJECT_NAME}
 		OpenSSL::Crypto
