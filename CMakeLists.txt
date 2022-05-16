@@ -10,17 +10,19 @@ file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS src/*.cpp src/*.c)
 add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
 
 target_include_directories(${PROJECT_NAME} PUBLIC
-        include
-        external/enet/include
-        external/json/include
-        external/fmt/include)
+	include
+	external/enet/include
+	external/fmt/include
+)
 
-add_subdirectory(external/enet)
-add_subdirectory(external/json)
 add_subdirectory(external/fmt)
 
+IF (WIN32)
+	target_link_libraries(${PROJECT_NAME} winmm wsock32 ws2_32)
+ENDIF()
+
 target_link_libraries(${PROJECT_NAME}
-	  nlohmann_json
-        enet
-        fmt)
+		enet
+		nlohmann_json
+		fmt)
 
