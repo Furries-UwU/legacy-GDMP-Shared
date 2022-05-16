@@ -1,23 +1,25 @@
 #pragma once
-#include <steam/steamnetworkingsockets.h>
-#include <steam/isteamnetworkingutils.h>
 
+#include <enet/enet.h>
 #include <stdexcept>
-#include <stdint.h>
+#include <vector>
 
+#include "struct.hpp"
 #include "enum.hpp"
-#include "util.hpp"
 
-struct Packet {
-	uint8_t  type;
-	uint32_t length; // I hope that i won't do something dumb
-	uint8_t* data;
+using json = nlohmann::json;
 
-	Packet(uint8_t type = UNKNOWN, uint32_t length = 0, uint8_t* data = nullptr);
-	
-	Packet(ISteamNetworkingMessage *incomingMessage);
-	
-	const uint8_t& operator[](int index);
-	
-	void send(ISteamNetworkingSockets *nInterface, HSteamNetConnection connection);
+class Packet {
+public:
+    uint8_t type;
+    unsigned int length;
+    uint8_t *data;
+
+    explicit Packet(uint8_t type = Unknown, unsigned int length = 0, uint8_t *data = nullptr);
+
+    static Packet serialize(ENetPacket *packet);
+
+    void sendPacket(ENetPeer *peer) const;
+
+    const uint8_t &operator[](int index);
 };

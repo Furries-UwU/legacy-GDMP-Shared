@@ -1,7 +1,10 @@
 #pragma once
+#include <nlohmann/json.hpp>
 #include <string>
 
 #include "enum.hpp"
+
+using json = nlohmann::json;
 
 struct Position {
     float x;
@@ -43,8 +46,6 @@ struct RenderData {
     bool isVisible;
 };
 
-// Used by server to send to client
-
 struct IncomingIconData {
     int playerId;
     IconData iconData;
@@ -62,5 +63,34 @@ struct IncomingRenderData {
 
 struct IncomingUsername {
     int playerId;
-    char* username;
+    std::string username;
 };
+
+////////////////////////////////////////////////////////////////////////////////
+
+void to_json(json &j, const Position &p);
+void from_json(const json &j, Position &p);
+
+void to_json(json &j, const IconData &p);
+void from_json(const json &j, IconData &p);
+
+void to_json(json &j, const ColorData &p);
+void from_json(const json &j, ColorData &p);
+
+void to_json(json &j, const BaseRenderData &p);
+void from_json(const json &j, BaseRenderData &p);
+
+void to_json(json &j, const RenderData &p);
+void from_json(const json &j, RenderData &p);
+
+void to_json(json &j, const IncomingIconData &p);
+void from_json(const json &j, IncomingIconData &p);
+
+void to_json(json &j, const IncomingColorData &p);
+void from_json(const json &j, IncomingColorData &p);
+
+void to_json(json &j, const IncomingRenderData &p);
+void from_json(const json &j, IncomingRenderData &p);
+
+void to_json(json &j, const IncomingUsername &p);
+void from_json(const json &j, IncomingUsername &p);

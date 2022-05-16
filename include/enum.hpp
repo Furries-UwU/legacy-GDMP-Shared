@@ -2,7 +2,7 @@
 
 enum PacketType {
 	UNKNOWN,
-	USERNAME, // Unused for now
+	USERNAME [[maybe_unused]], // Unused for now
 	ICON_DATA,
 	COLOR_DATA,
 	RENDER_DATA,
@@ -20,7 +20,7 @@ enum Gamemode {
 	ROBOT,
 	SPIDER,
 
-	OWO = 254,
-	UWU = 255,
-	NYAAA = 256
+	OWO [[maybe_unused]] = 254,
+	UWU [[maybe_unused]] = 255,
+	NYAAA [[maybe_unused]] = 256
 };

@@ -5,47 +5,22 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(GDMP-Shared)
 
-execute_process(COMMAND ${CMAKE_COMMAND}
-		-G "${CMAKE_GENERATOR}"
-		-Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_MODULE_COMPATIBLE=ON -Dprotobuf_BUILD_SHARED_LIBS=OFF
-		-DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/protobuf
-		-S ${CMAKE_CURRENT_SOURCE_DIR}/external/protobuf/cmake
-		-B ${CMAKE_BINARY_DIR}/build_protobuf
-		${PROTOBUF_BUILD_FLAG}
-		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/external/protobuf)
-execute_process(COMMAND ${CMAKE_COMMAND}
-		--build "${CMAKE_BINARY_DIR}/build_protobuf"
-		--config ${CMAKE_BUILD_TYPE}
-		--target install
-		${PROTOBUF_INSTALL_FLAG})
-set(Protobuf_USE_STATIC_LIBS ON)
-
-list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}/protobuf/bin")
-list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}/protobuf/cmake")
-list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}/protobuf/include")
-list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}/protobuf/lib")
-
-set(OPENSSL_USE_STATIC_LIBS TRUE)
-find_package(OpenSSL REQUIRED)
-
-set(BUILD_SHARED_LIB OFF)
-set(MSVC_CRT_STATIC ON)
-
 file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS src/*.cpp src/*.c)
 
 add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
 
 target_include_directories(${PROJECT_NAME} PUBLIC
-	include
-	external/GameNetworkingSockets/include
-	external/fmt/include
-)
+        include
+        external/enet/include
+        external/json/include
+        external/fmt/include)
 
-add_subdirectory(external/GameNetworkingSockets)
+add_subdirectory(external/enet)
+add_subdirectory(external/json)
 add_subdirectory(external/fmt)
 
 target_link_libraries(${PROJECT_NAME}
-		OpenSSL::Crypto
-		libprotobuf
-		GameNetworkingSockets::static
-		fmt)
+        enet
+        json
+        fmt)
+
