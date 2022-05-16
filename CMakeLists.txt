@@ -13,17 +13,18 @@ execute_process(COMMAND ${CMAKE_COMMAND}
 		-DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/protobuf
 		-S ${CMAKE_CURRENT_SOURCE_DIR}/external/protobuf/cmake
 		-B ${CMAKE_BINARY_DIR}/build_protobuf
+		-A Win32
 		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/external/protobuf)
 execute_process(COMMAND ${CMAKE_COMMAND}
 		--build "${CMAKE_BINARY_DIR}/build_protobuf"
 		--config ${CMAKE_BUILD_TYPE}
 		--target install)
 set(Protobuf_USE_STATIC_LIBS ON)
-set(Protobuf_PREFIX_PATH
-		"${CMAKE_BINARY_DIR}/protobuf/include"
-		"${CMAKE_BINARY_DIR}/protobuf/lib"
-		"${CMAKE_BINARY_DIR}/protobuf/bin" )
-list(APPEND CMAKE_PREFIX_PATH "${Protobuf_PREFIX_PATH}")
+
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}/protobuf/bin")
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}/protobuf/cmake")
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}/protobuf/include")
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}/protobuf/lib")
 
 set(OPENSSL_USE_STATIC_LIBS TRUE)
 find_package(OpenSSL REQUIRED)
