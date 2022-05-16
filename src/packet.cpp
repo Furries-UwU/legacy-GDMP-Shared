@@ -38,6 +38,8 @@ void Packet::sendPacket(ENetPeer* peer) {
         packetData[i] = this->operator[](i);
     }
 
+    memcpy(enetPacket->data, data, length);
+
     delete[] packetData;
 
     if (enet_peer_send(peer, 0, enetPacket) != 0)
