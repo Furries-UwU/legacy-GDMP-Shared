@@ -1,7 +1,6 @@
 #pragma once
 #include <enet/enet.h>
 #include <stdexcept>
-#include <stdint.h>
 
 #include "enum.hpp"
 #include "util.hpp"
@@ -11,9 +10,9 @@ struct Packet {
 	int length;
 	uint8_t* data;
 
-	Packet(uint8_t type = UNKNOWN, unsigned int length = 0, uint8_t* data = nullptr);
+	explicit Packet(uint8_t type = UNKNOWN, int length = 0, uint8_t* data = nullptr);
 	
-	Packet(ENetPacket *packet);
+	explicit Packet(ENetPacket *packet);
 	
 	const uint8_t& operator[](int index);
 	

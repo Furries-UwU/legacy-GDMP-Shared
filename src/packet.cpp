@@ -1,6 +1,6 @@
 #include "packet.hpp"
 
-Packet::Packet(uint8_t type, unsigned int length, uint8_t* data) {
+Packet::Packet(uint8_t type, int length, uint8_t* data) {
     this->type = type;
     this->length = length;
     this->data = data;
@@ -40,20 +40,20 @@ const uint8_t& Packet::operator[](int index) {
 }
 
 void Packet::send(ENetPeer* peer) {
-    int len = this->length + 5;
-    ENetPacket* enetPacket = enet_packet_create(nullptr, len, ENET_PACKET_FLAG_RELIABLE);
+    int packetLength = this->length + 5;
+    ENetPacket* enetPacket = enet_packet_create(nullptr, packetLength, ENET_PACKET_FLAG_RELIABLE);
     if (!enetPacket)
         return;
 
-    auto* pdata = new uint8_t[len];
+    auto* packetData = new uint8_t[packetLength];
 
-    for (int i = 0; i < len; i++) {
-        pdata[i] = this->operator[](i);
+    for (int i = 0; i < packetLength; i++) {
+        packetData[i] = this->operator[](i);
     }
 
-    memcpy(enetPacket->data, pdata, len);
+    memcpy(enetPacket->data, packetData, packetLength);
 
-    delete[] pdata;
+    delete[] packetData;
 
     if (enet_peer_send(peer, 0, enetPacket) != 0)
         enet_packet_destroy(enetPacket);
