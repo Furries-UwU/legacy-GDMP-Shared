@@ -8,22 +8,6 @@ struct Position {
     float y;
 };
 
-struct IconData {
-    int cubeId;
-    int shipId;
-    int ballId;
-    int ufoId;
-    int waveId;
-    int robotId;
-    int spiderId;
-};
-
-struct ColorData {
-    int primaryColor;
-    int secondaryColor;
-    bool glow;
-};
-
 struct BaseRenderData {
     Position position;
     float rotation;
@@ -34,6 +18,10 @@ struct BaseRenderData {
     bool isWave;
     bool isRobot;
     bool isSpider;
+    int primaryColor;
+    int secondaryColor;
+    bool glow;
+    int iconId;
 };
 
 struct RenderData {
@@ -41,16 +29,6 @@ struct RenderData {
     BaseRenderData playerTwo;
     bool isDual;
     bool isVisible;
-};
-
-struct IncomingIconData {
-    int playerId;
-    IconData iconData;
-};
-
-struct IncomingColorData {
-    int playerId;
-    ColorData colorData;
 };
 
 struct IncomingRenderData {
