@@ -1,25 +1,21 @@
 #pragma once
-
 #include <enet/enet.h>
 #include <stdexcept>
-#include <vector>
+#include <stdint.h>
 
-#include "struct.hpp"
 #include "enum.hpp"
+#include "util.hpp"
 
-using json = nlohmann::json;
+struct Packet {
+	uint8_t  type;
+	int length;
+	uint8_t* data;
 
-class Packet {
-public:
-    uint8_t type;
-    unsigned int length;
-    uint8_t *data;
-
-    explicit Packet(uint8_t type = Unknown, unsigned int length = 0, uint8_t *data = nullptr);
-
-    static Packet serialize(ENetPacket *packet);
-
-    void sendPacket(ENetPeer *peer);
-
-    const uint8_t& operator[](int index);
+	Packet(uint8_t type = UNKNOWN, unsigned int length = 0, uint8_t* data = nullptr);
+	
+	Packet(ENetPacket *packet);
+	
+	const uint8_t& operator[](int index);
+	
+	void send(ENetPeer* peer);
 };

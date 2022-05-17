@@ -1,96 +1,78 @@
 #pragma once
-#include <nlohmann/json.hpp>
 #include <string>
 
 #include "enum.hpp"
 
-using json = nlohmann::json;
-
-struct Position {
-    float x;
-    float y;
-};
-
-struct IconData {
-    int cubeId;
-    int shipId;
-    int ballId;
-    int ufoId;
-    int waveId;
-    int robotId;
-    int spiderId;
-};
-
-struct ColorData {
+struct ServerPlayerData
+{
+    int cube;
+    int ship;
+    int ball;
+    int bird;
+    int dart;
+    int robot;
+    int spider;
+    int glow;
     int primaryColor;
     int secondaryColor;
-    bool glow;
 };
 
-struct BaseRenderData {
-    Position position;
+struct BaseRenderData
+{
+    bool m_isShip;
+    bool m_isBird;
+    bool m_isBall;
+    bool m_isDart;
+    bool m_isRobot;
+    bool m_isSpider;
+    bool m_isUpsideDown;
+    bool m_isDashing;
+    float m_playerSpeed;
+    float posX;
+	float posY;
     float rotation;
     float scale;
-    bool isShip;
-    bool isBall;
-    bool isUFO;
-    bool isWave;
-    bool isRobot;
-    bool isSpider;
 };
 
 struct RenderData {
     BaseRenderData playerOne;
     BaseRenderData playerTwo;
-    bool isDual;
-    bool isVisible;
+    bool visible;
+    bool dual;
 };
 
-struct IncomingIconData {
-    int playerId;
-    IconData iconData;
+// Client
+
+struct ClientPlayerData
+{
+    unsigned int playerId;
+    int cube;
+    int ship;
+    int ball;
+    int bird;
+    int dart;
+    int robot;
+    int spider;
+    int glow;
+    int primaryColor;
+    int secondaryColor;
 };
 
-struct IncomingColorData {
-    int playerId;
-    ColorData colorData;
+struct PlayerRenderData
+{
+    unsigned int playerId;
+    BaseRenderData playerOne;
+    BaseRenderData playerTwo;
+    bool visible;
+    bool dual;
 };
 
-struct IncomingRenderData {
-    int playerId;
-    RenderData renderData;
+struct PlayerJoinLevel
+{
+    unsigned int playerId;
 };
 
-struct IncomingUsername {
-    int playerId;
-    std::string username;
+struct PlayerLeaveLevel
+{
+    unsigned int playerId;
 };
-
-////////////////////////////////////////////////////////////////////////////////
-
-void to_json(json &j, const Position &p);
-void from_json(const json &j, Position &p);
-
-void to_json(json &j, const IconData &p);
-void from_json(const json &j, IconData &p);
-
-void to_json(json &j, const ColorData &p);
-void from_json(const json &j, ColorData &p);
-
-void to_json(json &j, const BaseRenderData &p);
-void from_json(const json &j, BaseRenderData &p);
-
-void to_json(json &j, const RenderData &p);
-void from_json(const json &j, RenderData &p);
-
-void to_json(json &j, const IncomingIconData &p);
-void from_json(const json &j, IncomingIconData &p);
-
-void to_json(json &j, const IncomingColorData &p);
-void from_json(const json &j, IncomingColorData &p);
-
-void to_json(json &j, const IncomingRenderData &p);
-void from_json(const json &j, IncomingRenderData &p);
-
-void to_json(json &j, const IncomingUsername &p);
-void from_json(const json &j, IncomingUsername &p);

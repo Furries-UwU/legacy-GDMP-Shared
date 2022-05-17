@@ -1,52 +1,31 @@
 #include "packet.hpp"
 
-Packet::Packet(uint8_t type, unsigned int length, uint8_t *data) {
+Packet::Packet(uint8_t type, unsigned int length, uint8_t* data) {
     this->type = type;
     this->length = length;
     this->data = data;
 }
 
-Packet Packet::serialize(ENetPacket *eNetPacket) {
-    Packet packet;
-
-    if (eNetPacket->dataLength < 5) {
-        packet.type = UNKNOWN;
-        packet.length = 0;
-        packet.data = nullptr;
-    } else if (eNetPacket->dataLength == 5) {
-        packet.type = eNetPacket->data[0];
-        packet.length = 0;
-        packet.data = nullptr;
-    } else {
-        packet.type = eNetPacket->data[0];
-        packet.data = eNetPacket->data + 5;
+Packet::Packet(ENetPacket* packet) {
+    if (packet->dataLength < 5) {
+        this->type = UNKNOWN;
+        this->length = 0;
+        this->data = nullptr;
     }
-
-    return packet;
-}
-
-void Packet::sendPacket(ENetPeer* peer) {
-    auto trueLength = this->length + 5;
-    ENetPacket* enetPacket = enet_packet_create(nullptr, trueLength, ENET_PACKET_FLAG_RELIABLE);
-    if (!enetPacket)
-        return;
-
-    auto packetData = new uint8_t[trueLength];
-
-    for (int i = 0; i < trueLength; i++) {
-        packetData[i] = this->operator[](i);
+    else if (packet->dataLength == 5) {
+        this->type = packet->data[0];
+        this->length = 0;
+        this->data = nullptr;
     }
-
-    memcpy(enetPacket->data, data, trueLength);
-
-    delete[] packetData;
-
-    if (enet_peer_send(peer, 0, enetPacket) != 0)
-        enet_packet_destroy(enetPacket);
+    else {
+        this->type = packet->data[0];
+        this->length = packet->data[1] | (packet->data[2] << 8) | (packet->data[3] << 16) | (packet->data[4] << 24); // Util::uint_8_t_to_int doesn't work here for some reason
+        this->data = packet->data + 5;
+    }
 }
 
 const uint8_t& Packet::operator[](int index) {
-    if (index == 0) {
+    if (!index) {
         return this->type;
     }
     else if (index < 5) {
@@ -58,4 +37,24 @@ const uint8_t& Packet::operator[](int index) {
     else {
         throw std::out_of_range("Out of packet range");
     }
+}
+
+void Packet::send(ENetPeer* peer) {
+    int len = this->length + 5;
+    ENetPacket* enetPacket = enet_packet_create(nullptr, len, ENET_PACKET_FLAG_RELIABLE);
+    if (!enetPacket)
+        return;
+
+    auto* pdata = new uint8_t[len];
+
+    for (int i = 0; i < len; i++) {
+        pdata[i] = this->operator[](i);
+    }
+
+    memcpy(enetPacket->data, pdata, len);
+
+    delete[] pdata;
+
+    if (enet_peer_send(peer, 0, enetPacket) != 0)
+        enet_packet_destroy(enetPacket);
 }
