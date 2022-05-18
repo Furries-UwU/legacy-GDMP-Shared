@@ -16,8 +16,8 @@ struct Color {
 };
 
 struct IconData {
-    unsigned short iconId;
-    unsigned short iconIdCube; // used for ship & ufo
+    int iconId;
+    int iconIdCube; // used for ship & ufo
     Gamemode gamemode;
     float scale;
     bool glow;
