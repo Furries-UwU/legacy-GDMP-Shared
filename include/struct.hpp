@@ -6,22 +6,28 @@
 struct Position {
     float x;
     float y;
+    float rotation;
+};
+
+struct Color {
+    byte red;
+    byte green;
+    byte blue;
+};
+
+struct IconData {
+    unsigned short iconId;
+    unsigned short iconIdCube; // used for ship & ufo
+    Gamemode gamemode;
+    float scale;
+    bool glow;
+    Color primaryColor;
+    Color secondaryColor;
 };
 
 struct BaseRenderData {
     Position position;
-    float rotation;
-    float scale;
-    bool isShip;
-    bool isBall;
-    bool isUFO;
-    bool isWave;
-    bool isRobot;
-    bool isSpider;
-    int primaryColor;
-    int secondaryColor;
-    bool glow;
-    int iconId;
+    IconData iconData;
 };
 
 struct RenderData {

@@ -8,7 +8,7 @@ enum PacketType {
     LEAVE_LEVEL
 };
 
-enum Gamemode {
+enum Gamemode:unsigned char {
     NONE,
     CUBE,
     SHIP,
