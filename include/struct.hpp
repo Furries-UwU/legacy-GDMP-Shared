@@ -10,9 +10,9 @@ struct Position {
 };
 
 struct Color {
-    byte red;
-    byte green;
-    byte blue;
+    unsigned char red;
+    unsigned char green;
+    unsigned char blue;
 };
 
 struct IconData {
