@@ -1,6 +1,7 @@
 #pragma once
 #include <enet/enet.h>
 #include <stdexcept>
+#include <cstring>
 
 #include "enum.hpp"
 #include "util.hpp"
