@@ -6,28 +6,34 @@
 struct Position {
     float x;
     float y;
-    float rotation;
 };
 
 struct Color {
-    unsigned char red;
-    unsigned char green;
-    unsigned char blue;
+    unsigned char r;
+    unsigned char g;
+    unsigned char b;
+};
+
+struct ColorData {
+    Color primaryColor;
+    Color secondaryColor;
+    bool glow;
 };
 
 struct IconData {
-    int iconId;
-    int iconIdCube; // used for ship & ufo
-    Gamemode gamemode;
-    float scale;
-    bool glow;
-    Color primaryColor;
-    Color secondaryColor;
+    int cubeId;
+    int shipId;
+    int ballId;
+    int ufoId;
+    int waveId;
+    int robotId;
+    int spiderId;
 };
 
 struct BaseRenderData {
     Position position;
-    IconData iconData;
+    float rotation;
+    Gamemode gamemode;
 };
 
 struct RenderData {
@@ -35,6 +41,16 @@ struct RenderData {
     BaseRenderData playerTwo;
     bool isDual;
     bool isVisible;
+};
+
+struct IncomingColorData {
+    int playerId;
+    ColorData colorData;
+};
+
+struct IncomingIconData {
+    int playerId;
+    IconData iconData;
 };
 
 struct IncomingRenderData {
