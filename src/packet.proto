@@ -71,6 +71,10 @@ message IconData {
   required int32 spiderId = 7;
 }
 
+message JoinLevel {
+  required int32 levelId = 1;
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 
 message IncomingRenderData {
