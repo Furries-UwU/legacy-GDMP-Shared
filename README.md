@@ -1,6 +1,6 @@
 # GDMP-Shared
 
-Shared library used between the Client and Server
+Static library used between the Client and Server
 
 ## Credits
 

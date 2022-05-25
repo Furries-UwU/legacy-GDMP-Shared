@@ -1,8 +1,7 @@
 #pragma once
 
 enum PacketType {
-    UNKNOWN,
-    USERNAME [[maybe_unused]], // Unused for now
+    USERNAME,
     RENDER_DATA,
     COLOR_DATA,
     ICON_DATA,
@@ -10,8 +9,7 @@ enum PacketType {
     LEAVE_LEVEL
 };
 
-enum Gamemode:unsigned char {
-    NONE,
+enum Gamemode : unsigned char {
     CUBE,
     SHIP,
     BALL,
