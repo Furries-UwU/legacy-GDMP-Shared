@@ -6,7 +6,7 @@ enum PacketType {
   COLOR_DATA = 2;
   ICON_DATA = 3;
   JOIN_LEVEL = 4;
-  LEAVE_LEVE = 5;
+  LEAVE_LEVEL = 5;
 };
 
 enum Gamemode {
@@ -91,4 +91,12 @@ message IncomingIconData {
 message IncomingUsername {
   required int32 playerId = 1;
   required Username username = 2;
+}
+
+message IncomingLeaveLevel {
+  required int32 playerId = 1;
+}
+
+message IncomingJoinLevel {
+  required int32 playerId = 1;
 }
