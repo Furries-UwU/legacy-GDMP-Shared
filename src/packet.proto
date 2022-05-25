@@ -32,7 +32,7 @@ message Color {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-message Header {
+message Packet {
   required PacketType type = 1;
   required int32 length = 2;
   optional bytes data = 3;
