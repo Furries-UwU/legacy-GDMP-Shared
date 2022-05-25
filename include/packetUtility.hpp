@@ -4,5 +4,6 @@
 #include <vector>
 
 class PacketUtility {
+public:
     static void sendPacket(Packet, ENetPeer*);
 };
