@@ -34,8 +34,7 @@ message Color {
 
 message Packet {
   required PacketType type = 1;
-  optional int32 length = 2 [default = 0];
-  optional bytes data = 3;
+  optional bytes data = 2;
 }
 
 message Username {
