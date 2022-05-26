@@ -5,7 +5,7 @@ void PacketUtility::sendPacket(Packet packet, ENetPeer *peer) {
         return;
     }
 
-    std::vector<uint8_t> packetData;
+    std::vector<uint8_t> packetData(packet.ByteSizeLong());
     packet.SerializeToArray(packetData.data(), packet.ByteSizeLong());
 
     ENetPacket *enetPacket = enet_packet_create(packetData.data(), packetData.size(), ENET_PACKET_FLAG_RELIABLE);
