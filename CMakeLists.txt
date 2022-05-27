@@ -19,19 +19,11 @@ endif ()
 
 include(${CMAKE_BINARY_DIR}/conan.cmake)
 
-if (BUILD_SHARED)
-    conan_cmake_configure(REQUIRES fmt/8.1.1 protobuf/3.20.0 enet/1.3.17
-            GENERATORS cmake_find_package
-            OPTIONS protobuf:shared=True
-            fmt:shared=True
-            enet:shared=True)
-else ()
-    conan_cmake_configure(REQUIRES fmt/8.1.1 protobuf/3.20.0 enet/1.3.17
-            GENERATORS cmake_find_package
-            OPTIONS protobuf:shared=False
-            fmt:shared=False
-            enet:shared=False)
-endif ()
+conan_cmake_configure(REQUIRES fmt/8.1.1 protobuf/3.20.0 enet/1.3.17
+        GENERATORS cmake_find_package
+        OPTIONS protobuf:shared=False
+        fmt:shared=False
+        enet:shared=False)
 
 conan_cmake_autodetect(settings)
 
@@ -59,10 +51,6 @@ target_include_directories(${PROJECT_NAME} PUBLIC
         include
         ${PROTO_PARENT_HDRS}
         ${CMAKE_CURRENT_BINARY_DIR}
-        ${ENET_INCLUDE_DIR}
-        ${FMT_INCLUDE_DIR}
         )
-
-message(${ENET_INCLUDE_DIR} and ${FMT_INCLUDE_DIR})
 
 target_link_libraries(${PROJECT_NAME} enet::enet fmt::fmt protobuf::libprotobuf)
