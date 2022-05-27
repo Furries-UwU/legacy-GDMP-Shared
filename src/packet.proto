@@ -72,30 +72,8 @@ message JoinLevel {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-message IncomingRenderData {
-  required int32 playerId = 1;
-  required RenderData renderData = 2;
-}
-
-message IncomingColorData {
-  required int32 playerId = 1;
-  required ColorData colorData = 2;
-}
-
-message IncomingIconData {
-  required int32 playerId = 1;
-  required IconData iconData = 2;
-}
-
-message IncomingUsername {
-  required int32 playerId = 1;
-  required string username = 2;
-}
-
-message IncomingLeaveLevel {
-  required int32 playerId = 1;
-}
-
-message IncomingJoinLevel {
-  required int32 playerId = 1;
+message IncomingPacket {
+  required PacketType type = 1;
+  required int32 playerId = 2;
+  optional bytes data = 3;
 }
