@@ -6,4 +6,5 @@
 class PacketUtility {
 public:
     static void sendPacket(Packet, ENetPeer*);
+    static void sendPacket(IncomingPacket, ENetPeer*);
 };
