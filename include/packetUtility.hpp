@@ -5,6 +5,6 @@
 
 class PacketUtility {
 public:
-    static void sendPacket(Packet, ENetPeer*);
-    static void sendPacket(IncomingPacket, ENetPeer*);
+    static void sendPacket(const Packet&, ENetPeer*);
+    static void sendPacket(const IncomingPacket&, ENetPeer*);
 };
