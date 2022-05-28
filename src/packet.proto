@@ -1,4 +1,4 @@
-syntax = "proto2";
+syntax = "proto3";
 
 enum PacketType {
   USERNAME = 0;
@@ -20,60 +20,61 @@ enum Gamemode {
 }
 
 message Position {
-  required float x = 1;
-  required float y = 2;
+  float x = 1;
+  float y = 2;
 }
 
 message Color {
-  required int32 r = 1;
-  required int32 g = 2;
-  required int32 b = 3;
+  int32 r = 1;
+  int32 g = 2;
+  int32 b = 3;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 
 message Packet {
-  required PacketType type = 1;
+  PacketType type = 1;
   optional bytes data = 2;
 }
 
 message BaseRenderData {
-  required Position position = 1;
-  required float rotation = 2;
-  required float scale = 3;
-  required Gamemode gamemode = 4;
-  required bool isVisible = 5;
+  Position position = 1;
+  float rotation = 2;
+  float scale = 3;
+  Gamemode gamemode = 4;
+  bool isVisible = 5;
 }
 
 message RenderData {
-  required BaseRenderData playerOne = 1;
-  optional BaseRenderData playerTwo = 2;
+  BaseRenderData playerOne = 1;
+  BaseRenderData playerTwo = 2;
 }
 
 message ColorData {
-  required Color primaryColor = 1;
-  required Color secondaryColor = 2;
-  required bool glow = 3;
+  Color primaryColor = 1;
+  Color secondaryColor = 2;
+  bool glow = 3;
 }
 
 message IconData {
-  required int32 cubeId = 1;
-  required int32 shipId = 2;
-  required int32 ballId = 3;
-  required int32 ufoId = 4;
-  required int32 waveId = 5;
-  required int32 robotId = 6;
-  required int32 spiderId = 7;
+  int32 cubeId = 1;
+  int32 shipId = 2;
+  int32 ballId = 3;
+  int32 ufoId = 4;
+  int32 waveId = 5;
+  int32 robotId = 6;
+  int32 spiderId = 7;
+  //int32 swingId = 8;
 }
 
 message JoinLevel {
-  required int32 levelId = 1;
+  int32 levelId = 1;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 
 message IncomingPacket {
-  required PacketType type = 1;
-  required int32 playerId = 2;
+  PacketType type = 1;
+  int32 playerId = 2;
   optional bytes data = 3;
 }
