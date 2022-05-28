@@ -27,6 +27,8 @@ conan_cmake_configure(REQUIRES fmt/8.1.1 protobuf/3.20.0 enet/1.3.17
 
 conan_cmake_autodetect(settings)
 
+set(settings ${settings} ${CONAN_SETTINGS})
+
 conan_cmake_install(PATH_OR_REFERENCE .
         BUILD missing
         REMOTE conancenter
