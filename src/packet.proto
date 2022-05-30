@@ -70,14 +70,20 @@ message JoinLevel {
 
 message Packet {
   PacketType type = 1;
-  optional bytes data = 2;
+  oneof packetData {
+    bytes byteData = 2;
+    RenderData renderData = 3;
+    ColorData colorData = 4;
+    IconData iconData = 5;
+    JoinLevel joinLevel = 6;
+  }
 }
 
 message IncomingPacket {
   PacketType type = 1;
   int32 playerId = 2;
   oneof packetData {
-    bytes rawData = 3;
+    bytes byteData = 3;
     RenderData renderData = 4;
     ColorData colorData = 5;
     IconData iconData = 6;
