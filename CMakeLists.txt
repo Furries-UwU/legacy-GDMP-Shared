@@ -42,6 +42,9 @@ find_package(protobuf REQUIRED)
 set(Protobuf_IMPORT_DIRS ${Protobuf_IMPORT_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/external/GameNetworkingSockets/src/common  ${CMAKE_CURRENT_SOURCE_DIR}/src)
 include_directories(${protobuf_INCLUDE_DIRS})
 
+set(Protobuf_USE_STATIC_LIBS ON)
+set(OPENSSL_USE_STATIC_LIBS ON)
+set(BUILD_SHARED_LIB OFF)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/external/GameNetworkingSockets)
 
 file(GLOB_RECURSE PROTO_SOURCE_FILES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/*.proto)
