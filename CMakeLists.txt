@@ -7,9 +7,6 @@ project(GDMP-Shared)
 
 ###########################################################################
 
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR})
-list(APPEND CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR})
-
 if (NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
     message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
     file(DOWNLOAD "https://raw.githubusercontent.com/conan-io/cmake-conan/0.18.1/conan.cmake"
@@ -20,11 +17,7 @@ endif ()
 include(${CMAKE_BINARY_DIR}/conan.cmake)
 
 conan_cmake_configure(REQUIRES fmt/8.1.1 protobuf/3.20.0 openssl/3.0.3
-        GENERATORS cmake_find_package)
-        # OPTIONS protobuf:shared=False
-        # fmt:shared=False
-        # openssl:shared=False)
-
+        GENERATORS cmake_find_package cmake_paths)
 conan_cmake_autodetect(settings)
 
 set(CONAN_SETTINGS ${settings} ${CONAN_SETTINGS})
@@ -33,6 +26,8 @@ conan_cmake_install(PATH_OR_REFERENCE .
         BUILD missing
         REMOTE conancenter
         SETTINGS ${CONAN_SETTINGS})
+
+include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
 
 ###########################################################################
 
@@ -59,4 +54,4 @@ target_include_directories(${PROJECT_NAME} PUBLIC
                 ${protobuf_INCLUDE_DIRS}
                 )
 
-target_link_libraries(${PROJECT_NAME} GameNetworkingSockets::static fmt::fmt protobuf::libprotobuf)
+target_link_libraries(${PROJECT_NAME} GameNetworkingSockets fmt::fmt ${Protobuf_LIBRARIES})
