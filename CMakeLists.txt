@@ -20,10 +20,10 @@ endif ()
 include(${CMAKE_BINARY_DIR}/conan.cmake)
 
 conan_cmake_configure(REQUIRES fmt/8.1.1 protobuf/3.20.0 openssl/3.0.3
-        GENERATORS cmake_find_package
-        OPTIONS protobuf:shared=False
-        fmt:shared=False
-        openssl:shared=False)
+        GENERATORS cmake_find_package)
+        # OPTIONS protobuf:shared=False
+        # fmt:shared=False
+        # openssl:shared=False)
 
 conan_cmake_autodetect(settings)
 
@@ -42,9 +42,9 @@ find_package(protobuf REQUIRED)
 set(Protobuf_IMPORT_DIRS ${Protobuf_IMPORT_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/external/GameNetworkingSockets/src/common  ${CMAKE_CURRENT_SOURCE_DIR}/src)
 include_directories(${protobuf_INCLUDE_DIRS})
 
-set(Protobuf_USE_STATIC_LIBS ON)
-set(OPENSSL_USE_STATIC_LIBS ON)
-set(BUILD_SHARED_LIB OFF)
+# set(Protobuf_USE_STATIC_LIBS ON)
+# set(OPENSSL_USE_STATIC_LIBS ON)
+# set(BUILD_SHARED_LIB OFF)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/external/GameNetworkingSockets)
 
 file(GLOB_RECURSE PROTO_SOURCE_FILES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/*.proto)
