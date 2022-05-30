@@ -7,6 +7,7 @@ project(GDMP-Shared)
 
 set(Protobuf_USE_STATIC_LIBS ON)
 set(BUILD_SHARED_LIB OFF)
+set(MSVC_CRT_STATIC ON)
 
 ###########################################################################
 
@@ -30,10 +31,12 @@ conan_cmake_configure(REQUIRES fmt/8.1.1 protobuf/3.20.0 openssl/3.0.3
 
 conan_cmake_autodetect(settings)
 
+set(CONAN_SETTINGS ${settings} ${CONAN_SETTINGS})
+
 conan_cmake_install(PATH_OR_REFERENCE .
         BUILD missing
         REMOTE conancenter
-        SETTINGS ${settings})
+        SETTINGS ${CONAN_SETTINGS})
 
 ###########################################################################
 
