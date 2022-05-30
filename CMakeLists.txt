@@ -5,10 +5,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(GDMP-Shared)
 
-set(Protobuf_USE_STATIC_LIBS ON)
-set(BUILD_SHARED_LIB OFF)
-set(MSVC_CRT_STATIC ON)
-
 ###########################################################################
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_BINARY_DIR})
@@ -41,7 +37,7 @@ conan_cmake_install(PATH_OR_REFERENCE .
 ###########################################################################
 
 find_package(fmt REQUIRED)
-find_package(protobuf REQUIRED)
+find_package(Protobuf REQUIRED)
 
 set(Protobuf_IMPORT_DIRS ${Protobuf_IMPORT_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/external/GameNetworkingSockets/src/common  ${CMAKE_CURRENT_SOURCE_DIR}/src)
 include_directories(${protobuf_INCLUDE_DIRS})
