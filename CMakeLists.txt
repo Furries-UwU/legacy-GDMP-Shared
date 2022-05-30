@@ -7,8 +7,8 @@ project(GDMP-Shared)
 
 ###########################################################################
 
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_BINARY_DIR})
-list(APPEND CMAKE_PREFIX_PATH ${CMAKE_CURRENT_BINARY_DIR})
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR})
+list(APPEND CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR})
 
 if (NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
     message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
@@ -37,7 +37,7 @@ conan_cmake_install(PATH_OR_REFERENCE .
 ###########################################################################
 
 find_package(fmt REQUIRED)
-find_package(Protobuf REQUIRED)
+find_package(protobuf REQUIRED)
 
 set(Protobuf_IMPORT_DIRS ${Protobuf_IMPORT_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/external/GameNetworkingSockets/src/common  ${CMAKE_CURRENT_SOURCE_DIR}/src)
 include_directories(${protobuf_INCLUDE_DIRS})
@@ -59,4 +59,4 @@ target_include_directories(${PROJECT_NAME} PUBLIC
                 ${protobuf_INCLUDE_DIRS}
                 )
 
-target_link_libraries(${PROJECT_NAME} GameNetworkingSockets::static fmt::fmt ${Protobuf_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} GameNetworkingSockets::static fmt::fmt protobuf::libprotobuf)
