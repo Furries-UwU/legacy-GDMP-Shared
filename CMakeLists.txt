@@ -59,4 +59,4 @@ target_include_directories(${PROJECT_NAME} PUBLIC
                 ${protobuf_INCLUDE_DIRS}
                 )
 
-target_link_libraries(${PROJECT_NAME} GameNetworkingSockets::static fmt::fmt protobuf::libprotobuf)
+target_link_libraries(${PROJECT_NAME} GameNetworkingSockets::static fmt::fmt ${Protobuf_LIBRARIES})
