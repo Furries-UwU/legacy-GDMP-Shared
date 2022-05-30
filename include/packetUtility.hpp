@@ -1,10 +1,11 @@
 #pragma once
+#include <steam/steamnetworkingsockets.h>
+#include <steam/isteamnetworkingutils.h>
 #include <packet.pb.h>
-#include <enet/enet.h>
 #include <vector>
 
 class PacketUtility {
 public:
-    static void sendPacket(const Packet&, ENetPeer*);
-    static void sendPacket(const IncomingPacket&, ENetPeer*);
+    static void sendPacket(ISteamNetworkingSockets*, HSteamNetConnection, const Packet&);
+    static void sendPacket(ISteamNetworkingSockets*, HSteamNetConnection, const IncomingPacket&);
 };

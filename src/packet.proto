@@ -32,11 +32,6 @@ message Color {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-message Packet {
-  PacketType type = 1;
-  optional bytes data = 2;
-}
-
 message BaseRenderData {
   Position position = 1;
   float rotation = 2;
@@ -73,8 +68,19 @@ message JoinLevel {
 
 ////////////////////////////////////////////////////////////////////////////////
 
+message Packet {
+  PacketType type = 1;
+  optional bytes data = 2;
+}
+
 message IncomingPacket {
   PacketType type = 1;
   int32 playerId = 2;
-  optional bytes data = 3;
+  oneof packetData {
+    bytes rawData = 3;
+    RenderData renderData = 4;
+    ColorData colorData = 5;
+    IconData iconData = 6;
+    JoinLevel joinLevel = 7;
+  }
 }

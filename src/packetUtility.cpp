@@ -1,23 +1,18 @@
 #include "packetUtility.hpp"
 
-void PacketUtility::sendPacket(const Packet& packet, ENetPeer *peer) {
-    if (peer == nullptr)
+
+void PacketUtility::sendPacket(ISteamNetworkingSockets* interface, HSteamNetConnection connection, const Packet &packet)
+{
+    if (interface == nullptr)
         return;
-
-    std::string packetData = packet.SerializeAsString();
-
-    ENetPacket *enetPacket = enet_packet_create(packetData.c_str(), packetData.size()+1, ENET_PACKET_FLAG_RELIABLE);
-    if (enet_peer_send(peer, 0, enetPacket) != 0)
-        enet_packet_destroy(enetPacket);
+    const char* pData = packet.SerializeAsString().c_str();
+    interface->SendMessageToConnection(connection, pData, (uint32)strlen(pData), k_nSteamNetworkingSend_Reliable, nullptr);
 }
 
-void PacketUtility::sendPacket(const IncomingPacket& packet, ENetPeer *peer) {
-    if (peer == nullptr)
+void PacketUtility::sendPacket(ISteamNetworkingSockets* interface, HSteamNetConnection connection, const IncomingPacket &packet)
+{
+    if (interface == nullptr)
         return;
-
-    std::string packetData = packet.SerializeAsString();
-
-    ENetPacket *enetPacket = enet_packet_create(packetData.c_str(), packetData.size()+1, ENET_PACKET_FLAG_RELIABLE);
-    if (enet_peer_send(peer, 0, enetPacket) != 0)
-        enet_packet_destroy(enetPacket);
+    const char* pData = packet.SerializeAsString().c_str();
+    interface->SendMessageToConnection(connection, pData, (uint32)strlen(pData), k_nSteamNetworkingSend_Reliable, nullptr);
 }
