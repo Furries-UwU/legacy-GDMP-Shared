@@ -7,6 +7,9 @@ project(GDMP-Shared)
 
 ###########################################################################
 
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_BINARY_DIR})
+list(APPEND CMAKE_PREFIX_PATH ${CMAKE_CURRENT_BINARY_DIR})
+
 if (NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
     message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
     file(DOWNLOAD "https://raw.githubusercontent.com/conan-io/cmake-conan/0.18.1/conan.cmake"
@@ -16,8 +19,12 @@ endif ()
 
 include(${CMAKE_BINARY_DIR}/conan.cmake)
 
-conan_cmake_configure(REQUIRES fmt/8.1.1 protobuf/3.20.0 openssl/3.0.3
-        GENERATORS cmake_find_package cmake_paths)
+conan_cmake_configure(REQUIRES fmt/8.1.1 protobuf/3.20.0 enet/1.3.17
+        GENERATORS cmake_find_package cmake_paths
+        OPTIONS protobuf:shared=False
+        fmt:shared=False
+        enet:shared=False)
+
 conan_cmake_autodetect(settings)
 
 set(CONAN_SETTINGS ${settings} ${CONAN_SETTINGS})
@@ -31,16 +38,12 @@ include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
 
 ###########################################################################
 
+find_package(enet REQUIRED)
 find_package(fmt REQUIRED)
 find_package(protobuf REQUIRED)
 
-set(Protobuf_IMPORT_DIRS ${Protobuf_IMPORT_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/external/GameNetworkingSockets/src/common  ${CMAKE_CURRENT_SOURCE_DIR}/src)
-include_directories(${protobuf_INCLUDE_DIRS})
-
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/external/GameNetworkingSockets)
-
-file(GLOB_RECURSE PROTO_SOURCE_FILES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/*.proto)
-file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/src/*.c ${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h)
+file(GLOB_RECURSE PROTO_SOURCE_FILES CONFIGURE_DEPENDS src/*.proto)
+file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS src/*.cpp src/*.c)
 
 protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${PROTO_SOURCE_FILES})
 
@@ -49,9 +52,9 @@ add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES} ${PROTO_SRCS} ${PROTO_HDRS})
 cmake_path(GET PROTO_HDRS PARENT_PATH PROTO_PARENT_HDRS)
 
 target_include_directories(${PROJECT_NAME} PUBLIC
-                include 
-                ${PROTO_PARENT_HDRS}
-                ${protobuf_INCLUDE_DIRS}
-                )
+        include
+        ${PROTO_PARENT_HDRS}
+        ${CMAKE_CURRENT_BINARY_DIR}
+        )
 
-target_link_libraries(${PROJECT_NAME} GameNetworkingSockets fmt::fmt ${Protobuf_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} enet::enet fmt::fmt protobuf::libprotobuf)
