@@ -76,6 +76,7 @@ message Packet {
     ColorData colorData = 4;
     IconData iconData = 5;
     JoinLevel joinLevel = 6;
+    int32 levelId = 7;
   }
 }
 
