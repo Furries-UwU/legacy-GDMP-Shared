@@ -88,5 +88,6 @@ message IncomingPacket {
     ColorData colorData = 5;
     IconData iconData = 6;
     JoinLevel joinLevel = 7;
+    int32 levelId = 8;
   }
 }
