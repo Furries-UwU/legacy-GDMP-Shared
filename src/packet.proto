@@ -82,13 +82,13 @@ message Packet {
 
 message IncomingPacket {
   PacketType type = 1;
-  int32 playerId = 2;
   oneof packetData {
-    bytes byteData = 3;
-    RenderData renderData = 4;
-    ColorData colorData = 5;
-    IconData iconData = 6;
-    JoinLevel joinLevel = 7;
-    int32 levelId = 8;
+    bytes byteData = 2;
+    RenderData renderData = 3;
+    ColorData colorData = 4;
+    IconData iconData = 5;
+    JoinLevel joinLevel = 6;
+    int32 levelId = 7;
   }
+  int32 playerId = 8;
 }
