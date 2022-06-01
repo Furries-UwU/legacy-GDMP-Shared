@@ -34,7 +34,7 @@ conan_cmake_install(PATH_OR_REFERENCE .
         REMOTE conancenter
         SETTINGS ${CONAN_SETTINGS})
 
-include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
+include(${CMAKE_CURRENT_BINARY_DIR}/conan_paths.cmake)
 
 ###########################################################################
 
