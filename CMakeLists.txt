@@ -32,7 +32,8 @@ include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
 ###########################################################################
 
 find_package(fmt REQUIRED)
-find_package(protobuf REQUIRED)
+find_package(Protobuf REQUIRED)
+find_package(enet REQUIRED)
 
 set(Protobuf_IMPORT_DIRS ${Protobuf_IMPORT_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/external/GameNetworkingSockets/src/common  ${CMAKE_CURRENT_SOURCE_DIR}/src)
 include_directories(${protobuf_INCLUDE_DIRS})
@@ -54,4 +55,8 @@ target_include_directories(${PROJECT_NAME} PUBLIC
                 ${protobuf_INCLUDE_DIRS}
                 )
 
+<<<<<<< HEAD
 target_link_libraries(${PROJECT_NAME} GameNetworkingSockets fmt::fmt ${Protobuf_LIBRARIES})
+=======
+target_link_libraries(${PROJECT_NAME} enet::enet fmt::fmt protobuf::libprotobuf)
+>>>>>>> cca04bb (fix compile)
