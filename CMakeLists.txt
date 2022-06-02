@@ -36,9 +36,6 @@ include(${CMAKE_CURRENT_BINARY_DIR}/conan_paths.cmake)
 find_package(enet REQUIRED)
 find_package(fmt REQUIRED)
 
-file(GLOB_RECURSE PROTO_SOURCE_FILES CONFIGURE_DEPENDS src/*.proto)
-file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS src/*.cpp src/*.c)
-
 target_include_directories(${PROJECT_NAME} PUBLIC
         include
         ${CMAKE_CURRENT_BINARY_DIR}
