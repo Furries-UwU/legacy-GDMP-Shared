@@ -54,8 +54,3 @@ struct IncomingRenderData {
     uint16_t playerId;
     RenderData renderData;
 };
-
-struct IncomingUsername {
-    uint16_t playerId;
-    std::string username;
-};
