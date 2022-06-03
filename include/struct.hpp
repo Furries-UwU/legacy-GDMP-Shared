@@ -16,6 +16,12 @@ struct BaseRenderData {
     float scale;
     bool visible;
     Gamemode gamemode;
+};
+
+// Holds the data for the RENDER_DATA packet
+struct RenderData {
+    BaseRenderData playerOne;
+    BaseRenderData playerTwo;
     Color primaryColor;
     Color secondaryColor;
     bool glow;
@@ -26,12 +32,6 @@ struct BaseRenderData {
     uint16_t waveId;
     uint16_t robotId;
     uint16_t spiderId;
-};
-
-// Holds the data for the RENDER_DATA packet
-struct RenderData {
-    BaseRenderData playerOne;
-    BaseRenderData playerTwo;
 };
 
 struct IncomingRenderData {
