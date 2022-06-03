@@ -29,32 +29,33 @@ struct BaseRenderData {
     float x;
     float y;
     float rotation;
+    float scale;
+    bool visible;
     Gamemode gamemode;
 };
 
+// Holds the data for the RENDER_DATA packet
 struct RenderData {
     BaseRenderData playerOne;
     BaseRenderData playerTwo;
-    bool isVisible;
-    bool isDual;
 };
 
 struct IncomingColorData {
-    uint32_t playerId;
+    uint16_t playerId;
     ColorData colorData;
 };
 
 struct IncomingIconData {
-    uint32_t playerId;
+    uint16_t playerId;
     IconData iconData;
 };
 
 struct IncomingRenderData {
-    uint32_t playerId;
+    uint16_t playerId;
     RenderData renderData;
 };
 
 struct IncomingUsername {
-    uint32_t playerId;
+    uint16_t playerId;
     std::string username;
 };
