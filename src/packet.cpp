@@ -27,14 +27,12 @@ Packet::Packet(ENetPacket* packet) {
 const uint8_t& Packet::operator[](int index) {
     if (!index) {
         return this->type;
-    }
-    else if (index < 5) {
+    } else if (index < 5) {
         return reinterpret_cast<uint8_t*>(&this->length)[index - 1];
     }
     else if (index < this->length + 5) {
         return this->data[index - 5];
-    }
-    else {
+    } else {
         throw std::out_of_range("Out of packet range");
     }
 }
