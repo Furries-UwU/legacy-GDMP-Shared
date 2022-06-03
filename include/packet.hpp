@@ -7,8 +7,8 @@
 #include "util.hpp"
 
 struct Packet {
-	uint8_t  type;
-	int length;
+	uint8_t type;
+	uint16_t length;
 	uint8_t* data;
 
 	explicit Packet(uint8_t type = UNKNOWN, int length = 0, uint8_t* data = nullptr);

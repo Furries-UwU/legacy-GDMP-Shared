@@ -3,15 +3,10 @@
 
 #include "enum.hpp"
 
-struct Position {
-    float x;
-    float y;
-};
-
 struct Color {
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
+    uint8_t r;
+    uint8_t g;
+    uint8_t b;
 };
 
 struct ColorData {
@@ -21,17 +16,18 @@ struct ColorData {
 };
 
 struct IconData {
-    int cubeId;
-    int shipId;
-    int ballId;
-    int ufoId;
-    int waveId;
-    int robotId;
-    int spiderId;
+    uint16_t cubeId;
+    uint16_t shipId;
+    uint16_t ballId;
+    uint16_t ufoId;
+    uint16_t waveId;
+    uint16_t robotId;
+    uint16_t spiderId;
 };
 
 struct BaseRenderData {
-    Position position;
+    float x;
+    float y;
     float rotation;
     Gamemode gamemode;
 };
@@ -39,26 +35,26 @@ struct BaseRenderData {
 struct RenderData {
     BaseRenderData playerOne;
     BaseRenderData playerTwo;
-    bool isDual;
     bool isVisible;
+    bool isDual;
 };
 
 struct IncomingColorData {
-    int playerId;
+    uint32_t playerId;
     ColorData colorData;
 };
 
 struct IncomingIconData {
-    int playerId;
+    uint32_t playerId;
     IconData iconData;
 };
 
 struct IncomingRenderData {
-    int playerId;
+    uint32_t playerId;
     RenderData renderData;
 };
 
 struct IncomingUsername {
-    int playerId;
+    uint32_t playerId;
     std::string username;
 };
