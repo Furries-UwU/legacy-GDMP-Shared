@@ -9,13 +9,16 @@ struct Color {
     uint8_t b;
 };
 
-struct ColorData {
+struct BaseRenderData {
+    float x;
+    float y;
+    float rotation;
+    float scale;
+    bool visible;
+    Gamemode gamemode;
     Color primaryColor;
     Color secondaryColor;
     bool glow;
-};
-
-struct IconData {
     uint16_t cubeId;
     uint16_t shipId;
     uint16_t ballId;
@@ -25,29 +28,10 @@ struct IconData {
     uint16_t spiderId;
 };
 
-struct BaseRenderData {
-    float x;
-    float y;
-    float rotation;
-    float scale;
-    bool visible;
-    Gamemode gamemode;
-};
-
 // Holds the data for the RENDER_DATA packet
 struct RenderData {
     BaseRenderData playerOne;
     BaseRenderData playerTwo;
-};
-
-struct IncomingColorData {
-    uint16_t playerId;
-    ColorData colorData;
-};
-
-struct IncomingIconData {
-    uint16_t playerId;
-    IconData iconData;
 };
 
 struct IncomingRenderData {
