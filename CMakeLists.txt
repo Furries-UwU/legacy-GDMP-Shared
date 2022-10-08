@@ -19,7 +19,7 @@ include(${CMAKE_BINARY_DIR}/conan.cmake)
 
 conan_cmake_run(CONANFILE conanfile.txt
         BASIC_SETUP CMAKE_TARGETS
-        BUILD all)
+        BUILD missing)
 
 conan_cmake_autodetect(settings)
 
@@ -27,4 +27,5 @@ file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS src/*.cpp src/*.c)
 
 add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
 
+target_include_directories(${PROJECT_NAME} PUBLIC include)
 target_link_libraries(${PROJECT_NAME} CONAN_PKG::zmqpp CONAN_PKG::fmt)

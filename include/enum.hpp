@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+
 enum PacketType:uint8_t {
     UNKNOWN = 0,
     JOIN_LEVEL = 1,
