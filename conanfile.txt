@@ -1,0 +1,10 @@
+[requires]
+zmqpp/4.2.0
+fmt/9.1.0
+
+[options]
+zmqpp:shared=False
+fmt:shared=False
+
+[generators]
+cmake
